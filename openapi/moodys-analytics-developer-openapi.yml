@@ -1,0 +1,343 @@
+openapi: 3.1.0
+info:
+  title: "Moody's Analytics Developer Platform API"
+  version: 1.0.0
+  description: >-
+    Cross-cutting umbrella API surface for the Moody's Analytics developer
+    platform covering authentication (OAuth2 client credentials and HMAC
+    request signing), platform health, product catalog discovery, and a
+    canonical pattern for asynchronous analysis-job execution used across
+    multiple Moody's Analytics product APIs (Data Buffet, Scenario Studio,
+    ImpairmentStudio, AutoCycle, ECCL).
+  contact:
+    name: "Moody's Analytics Developer Support"
+    email: helpeconomy@moodys.com
+    url: https://developer.moodys.com/
+  license:
+    name: "Moody's Analytics Terms of Use"
+    url: https://www.moodys.com/web/en/us/about/legal/terms-of-use.html
+externalDocs:
+  description: "Moody's Analytics Developer Portal"
+  url: https://developer.moodys.com/
+
+servers:
+- url: https://api.economy.com
+  description: "Moody's Analytics economy.com API gateway"
+- url: https://api.moodys.com
+  description: "Moody's Analytics moodys.com API gateway"
+
+tags:
+- name: Authentication
+  description: OAuth2 client-credentials token issuance and HMAC signing helpers
+- name: Catalog
+  description: Discovery of available products, datasets, and entitlements
+- name: Health
+  description: Platform availability and version metadata
+- name: Jobs
+  description: Asynchronous analysis-job submission, polling, and output retrieval
+
+security:
+- oauth2: []
+
+paths:
+  /oauth2/token:
+    post:
+      operationId: getAccessToken
+      summary: Moody's Obtain an Access Token
+      description: >-
+        Issues an OAuth2 bearer token using client_credentials grant. The
+        returned token is valid for one hour and must be presented as a
+        Bearer token on subsequent requests.
+      tags:
+      - Authentication
+      security: []
+      requestBody:
+        required: true
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: "#/components/schemas/TokenRequest"
+      responses:
+        "200":
+          description: Token issued
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/AccessToken"
+        "400":
+          description: Malformed token request
+        "401":
+          description: Invalid client credentials
+
+  /health:
+    get:
+      operationId: getHealth
+      summary: Moody's Get Platform Health
+      description: Returns the health status of the developer platform gateway.
+      tags:
+      - Health
+      security: []
+      responses:
+        "200":
+          description: Healthy
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Health"
+
+  /catalog/products:
+    get:
+      operationId: listProducts
+      summary: Moody's List Catalog Products
+      description: >-
+        Lists Moody's Analytics product APIs the caller is entitled to,
+        including base URL, version, and documentation URL per product.
+      tags:
+      - Catalog
+      responses:
+        "200":
+          description: Product catalog returned
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/Product"
+
+  /catalog/products/{productId}:
+    get:
+      operationId: getProduct
+      summary: Moody's Get Catalog Product
+      description: Returns metadata for a single product in the catalog.
+      tags:
+      - Catalog
+      parameters:
+      - $ref: "#/components/parameters/productId"
+      responses:
+        "200":
+          description: Product returned
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Product"
+        "404":
+          description: Product not found
+
+  /jobs:
+    post:
+      operationId: submitJob
+      summary: Moody's Submit Analysis Job
+      description: >-
+        Submits an asynchronous analysis job (e.g. an ImpairmentStudio run,
+        a Data Buffet bulk order, or a Scenario Studio scenario generation).
+        Returns the job identifier used to poll status and download output.
+      tags:
+      - Jobs
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/JobRequest"
+      responses:
+        "202":
+          description: Job accepted
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Job"
+        "400":
+          description: Invalid job request
+
+  /jobs/{jobId}:
+    get:
+      operationId: getJob
+      summary: Moody's Get Job Status
+      description: Returns the current status of an analysis job.
+      tags:
+      - Jobs
+      parameters:
+      - $ref: "#/components/parameters/jobId"
+      responses:
+        "200":
+          description: Job status
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Job"
+        "404":
+          description: Job not found
+
+  /jobs/{jobId}/output:
+    get:
+      operationId: downloadJobOutput
+      summary: Moody's Download Job Output
+      description: Downloads the binary or JSON output of a completed analysis job.
+      tags:
+      - Jobs
+      parameters:
+      - $ref: "#/components/parameters/jobId"
+      responses:
+        "200":
+          description: Output returned
+          content:
+            application/octet-stream:
+              schema:
+                type: string
+                format: binary
+            application/json:
+              schema:
+                type: object
+        "404":
+          description: Job not found or not complete
+
+components:
+  securitySchemes:
+    oauth2:
+      type: oauth2
+      flows:
+        clientCredentials:
+          tokenUrl: https://api.economy.com/oauth2/token
+          scopes:
+            read: Read access to entitled Moody's Analytics products
+            write: Write access for job submission and basket / order management
+    hmac:
+      type: apiKey
+      in: header
+      name: Authorization
+      description: >-
+        HMAC-SHA256 request signing scheme used as an alternative to OAuth2 on
+        legacy Moody's Analytics product APIs (Data Buffet, Scenario Studio).
+
+  parameters:
+    productId:
+      name: productId
+      in: path
+      required: true
+      description: The identifier of a Moody's Analytics product in the catalog.
+      schema:
+        type: string
+    jobId:
+      name: jobId
+      in: path
+      required: true
+      description: The identifier of an analysis job.
+      schema:
+        type: string
+
+  schemas:
+    TokenRequest:
+      type: object
+      required:
+      - grant_type
+      - client_id
+      - client_secret
+      properties:
+        grant_type:
+          type: string
+          enum: [client_credentials]
+        client_id:
+          type: string
+        client_secret:
+          type: string
+        scope:
+          type: string
+
+    AccessToken:
+      type: object
+      properties:
+        access_token:
+          type: string
+        token_type:
+          type: string
+          enum: [Bearer]
+        expires_in:
+          type: integer
+          description: Lifetime of the token in seconds.
+        scope:
+          type: string
+
+    Health:
+      type: object
+      properties:
+        status:
+          type: string
+          enum: [healthy, degraded, down]
+        version:
+          type: string
+        timestamp:
+          type: string
+          format: date-time
+
+    Product:
+      type: object
+      properties:
+        productId:
+          type: string
+        name:
+          type: string
+        description:
+          type: string
+        baseUrl:
+          type: string
+          format: uri
+        version:
+          type: string
+        documentationUrl:
+          type: string
+          format: uri
+        tags:
+          type: array
+          items:
+            type: string
+
+    JobRequest:
+      type: object
+      required:
+      - productId
+      - inputs
+      properties:
+        productId:
+          type: string
+          description: The Moody's Analytics product to run the job against.
+        name:
+          type: string
+        inputs:
+          type: object
+          additionalProperties: true
+        notifyUrl:
+          type: string
+          format: uri
+
+    Job:
+      type: object
+      properties:
+        jobId:
+          type: string
+        productId:
+          type: string
+        status:
+          type: string
+          enum: [queued, running, completed, failed, cancelled]
+        submittedAt:
+          type: string
+          format: date-time
+        completedAt:
+          type: string
+          format: date-time
+        outputUrl:
+          type: string
+          format: uri
+        error:
+          $ref: "#/components/schemas/Error"
+
+    Error:
+      type: object
+      properties:
+        code:
+          type: string
+        message:
+          type: string
+        details:
+          type: object
+          additionalProperties: true

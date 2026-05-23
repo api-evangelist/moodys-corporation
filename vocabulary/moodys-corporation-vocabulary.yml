@@ -1,0 +1,87 @@
+name: Moody's Corporation Vocabulary
+description: >-
+  Domain vocabulary mapping Moody's Corporation product lines, business
+  segments, and analytical entities across credit ratings, KYC, economic
+  data, ESG, climate, and catastrophe risk.
+version: 0.1.0
+provider: moodys-corporation
+
+segments:
+  - id: moodys-ratings
+    name: Moody's Ratings (MIS)
+    description: Credit ratings, research, and risk analysis on debt obligations.
+  - id: moodys-analytics
+    name: Moody's Analytics
+    description: Data, software, research, and APIs across credit, KYC, economics, ESG, climate, and cat risk.
+
+product_lines:
+  - id: data-buffet
+    name: Data Buffet
+    segment: moodys-analytics
+  - id: scenario-studio
+    name: Scenario Studio
+    segment: moodys-analytics
+  - id: autocycle
+    name: AutoCycle
+    segment: moodys-analytics
+  - id: eccl
+    name: Expected Consumer Credit Loss
+    segment: moodys-analytics
+  - id: impairmentstudio
+    name: ImpairmentStudio
+    segment: moodys-analytics
+  - id: orbis
+    name: Orbis (Bureau van Dijk)
+    segment: moodys-analytics
+  - id: kompany
+    name: Kompany / Maxsight KYC
+    segment: moodys-analytics
+  - id: passfort
+    name: Passfort Lifecycle
+    segment: moodys-analytics
+  - id: rms-irp
+    name: RMS Intelligent Risk Platform
+    segment: moodys-analytics
+  - id: esg-climate
+    name: ESG & Climate Solutions
+    segment: moodys-analytics
+
+domain_terms:
+  - term: Rating
+    definition: Moody's opinion of the relative credit risk of a financial obligation.
+  - term: Rating Outlook
+    definition: Opinion on the likely direction of a rating over the medium term.
+  - term: Watchlist
+    definition: Public indication that a rating is under review for upgrade, downgrade, or with direction uncertain.
+  - term: LEI
+    definition: Legal Entity Identifier — ISO 17442 20-character alphanumeric code for legal entities.
+  - term: UBO
+    definition: Ultimate Beneficial Owner of a legal entity.
+  - term: CECL
+    definition: Current Expected Credit Loss accounting standard for lifetime loss reserves.
+  - term: CCAR
+    definition: Comprehensive Capital Analysis and Review stress-testing framework.
+  - term: Mnemonic
+    definition: Unique identifier for a Moody's Data Buffet time series.
+  - term: Vintage
+    definition: Publication tag identifying when a forecast series was produced.
+  - term: Catastrophe Model
+    definition: Stochastic model estimating financial loss from natural or man-made perils.
+  - term: TCFD
+    definition: Task Force on Climate-related Financial Disclosures recommendations.
+  - term: SFDR
+    definition: EU Sustainable Finance Disclosure Regulation.
+  - term: CSRD
+    definition: EU Corporate Sustainability Reporting Directive.
+
+tags:
+  - Analytics
+  - Catastrophe Risk
+  - Climate Risk
+  - Compliance
+  - Credit Ratings
+  - Economic Data
+  - ESG
+  - Financial Data
+  - KYC
+  - Risk

@@ -1,0 +1,59 @@
+name: credit-onboarding-workflow
+title: Moody's Cross-API Credit Onboarding Workflow
+description: >-
+  End-to-end onboarding composition that combines Moody's KYC entity
+  verification, Orbis ownership and corporate-family data, Moody's Ratings
+  issuer ratings, and Data Buffet macroeconomic context to produce a single
+  underwriting brief on a counterparty.
+provider: moodys-corporation
+version: 0.1.0
+
+steps:
+  - id: verify_entity
+    uses: kyc-entity-verification
+    with:
+      company_name: "${input.company_name}"
+      country: "${input.country}"
+      registration_number: "${input.registration_number}"
+    out: entity
+
+  - id: enrich_ownership
+    uses: orbis-entity-lookup
+    with:
+      name: "${entity.name}"
+      country: "${entity.country}"
+    out: orbis
+
+  - id: pull_macro_context
+    uses: data-buffet
+    with:
+      mnemonic: "FFEDTAR"
+      geography: "${entity.country}"
+      startDate: "${input.lookback_start}"
+      endDate: "${input.today}"
+    out: rates
+
+  - id: assemble_brief
+    description: Compose the resolved entity, ownership chain, and macro context into a credit onboarding brief.
+    inputs:
+      entity: "${entity}"
+      ownership: "${orbis.ownership}"
+      macro: "${rates}"
+    out: brief
+
+inputs:
+  - name: company_name
+    type: string
+  - name: country
+    type: string
+    required: true
+  - name: registration_number
+    type: string
+  - name: lookback_start
+    type: string
+  - name: today
+    type: string
+
+outputs:
+  - name: brief
+    type: object

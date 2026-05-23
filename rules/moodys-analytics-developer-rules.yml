@@ -1,0 +1,60 @@
+extends: ["spectral:oas"]
+rules:
+  moodys-operation-summary-prefix:
+    description: All operation summaries should start with "Moody's" for branding consistency.
+    severity: warn
+    given: "$.paths[*][get,put,post,delete,patch].summary"
+    then:
+      function: pattern
+      functionOptions:
+        match: "^Moody's "
+
+  moodys-operation-summary-title-case:
+    description: Operation summaries should be in Title Case.
+    severity: warn
+    given: "$.paths[*][get,put,post,delete,patch].summary"
+    then:
+      function: pattern
+      functionOptions:
+        match: "^[A-Z][A-Za-z0-9'’()/&,.\\- ]*$"
+
+  moodys-tag-title-case:
+    description: Tag names should be in Title Case.
+    severity: warn
+    given: "$.tags[*].name"
+    then:
+      function: pattern
+      functionOptions:
+        match: "^[A-Z][A-Za-z0-9 &/'()-]*$"
+
+  moodys-oauth2-required:
+    description: APIs must define OAuth2 client-credentials security at the root.
+    severity: error
+    given: "$.components.securitySchemes"
+    then:
+      function: schema
+      functionOptions:
+        schema:
+          type: object
+          properties:
+            oauth2:
+              type: object
+          required: [oauth2]
+
+  moodys-server-https:
+    description: All server URLs must use https.
+    severity: error
+    given: "$.servers[*].url"
+    then:
+      function: pattern
+      functionOptions:
+        match: "^https://"
+
+  moodys-operation-id-camel-case:
+    description: operationId must be camelCase.
+    severity: warn
+    given: "$.paths[*][get,put,post,delete,patch].operationId"
+    then:
+      function: pattern
+      functionOptions:
+        match: "^[a-z][a-zA-Z0-9]*$"

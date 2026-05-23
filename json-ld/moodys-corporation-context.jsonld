@@ -1,0 +1,48 @@
+{
+  "@context": {
+    "@version": 1.1,
+    "schema": "https://schema.org/",
+    "moodys": "https://github.com/api-evangelist/moodys-corporation/vocab/",
+    "fibo": "https://spec.edmcouncil.org/fibo/ontology/",
+
+    "Organization": "schema:Organization",
+    "LegalEntity": "fibo:FBC/FunctionalEntities/FunctionalEntities/LegalEntity",
+    "FinancialProduct": "schema:FinancialProduct",
+    "CreditRating": "moodys:CreditRating",
+    "Issuer": "moodys:Issuer",
+    "Instrument": "moodys:Instrument",
+    "TimeSeries": "moodys:TimeSeries",
+    "CatastropheEvent": "moodys:CatastropheEvent",
+    "EsgScore": "moodys:EsgScore",
+
+    "name": "schema:name",
+    "description": "schema:description",
+    "identifier": "schema:identifier",
+    "country": "schema:addressCountry",
+
+    "rating": "moodys:rating",
+    "ratingScale": "moodys:ratingScale",
+    "outlook": "moodys:outlook",
+    "watch": "moodys:watch",
+    "ratingDate": "moodys:ratingDate",
+    "researchUrl": "moodys:researchUrl",
+
+    "lei": "fibo:FBC/FunctionalEntities/FormalBusinessOrganizations/hasLegalEntityIdentifier",
+    "isin": "fibo:SEC/Securities/IdentificationIssuance/hasISIN",
+    "cusip": "fibo:SEC/Securities/IdentificationIssuance/hasCUSIP",
+    "registrationNumber": "moodys:registrationNumber",
+    "register": "moodys:register",
+
+    "mnemonic": "moodys:mnemonic",
+    "frequency": "moodys:frequency",
+    "geography": "moodys:geography",
+    "observations": "moodys:observations",
+    "date": "schema:observationDate",
+    "value": "schema:value",
+
+    "peril": "moodys:peril",
+    "modeledLoss": "moodys:modeledLoss",
+    "groundUp": "moodys:groundUp",
+    "insured": "moodys:insured"
+  }
+}

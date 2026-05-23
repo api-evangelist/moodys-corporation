@@ -1,0 +1,69 @@
+name: data-buffet
+title: Moody's Data Buffet Time-Series Retrieval
+description: >-
+  Search the Moody's Analytics Data Buffet repository, retrieve single or
+  multi-series economic, demographic, and financial time-series data, and
+  submit asynchronous bulk-order workflows backed by saved baskets.
+provider: moodys-corporation
+api: moodys-data-buffet-api
+version: 0.1.0
+
+inputs:
+  - name: mnemonic
+    type: string
+    required: false
+    description: Time-series mnemonic identifier (e.g. FFEDTAR).
+  - name: query
+    type: string
+    required: false
+    description: Search query string.
+  - name: geography
+    type: string
+    required: false
+  - name: source
+    type: string
+    required: false
+  - name: startDate
+    type: string
+    required: false
+  - name: endDate
+    type: string
+    required: false
+
+outputs:
+  - name: series
+    type: array
+    description: Time-series data observations.
+  - name: orderId
+    type: string
+    description: Identifier returned for asynchronous bulk orders.
+
+operations:
+  - operationId: searchSeries
+    method: GET
+    path: /search
+  - operationId: getSeries
+    method: GET
+    path: /series
+  - operationId: getMultiSeries
+    method: POST
+    path: /multi-series
+  - operationId: createBasket
+    method: POST
+    path: /baskets
+  - operationId: createOrder
+    method: POST
+    path: /orders
+  - operationId: downloadOrder
+    method: GET
+    path: /orders/{orderId}/download
+
+rate_limits:
+  requests_per_second: 1
+  monthly_data_gb: 1
+
+failure_modes:
+  - code: 429
+    description: Rate limit exceeded; back off and retry.
+  - code: 404
+    description: Series mnemonic not found.

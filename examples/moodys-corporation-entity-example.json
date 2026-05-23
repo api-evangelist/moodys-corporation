@@ -1,0 +1,24 @@
+{
+  "entityId": "BVD-GB12345678",
+  "bvdId": "GB12345678",
+  "lei": "529900T8BM49AURSDO55",
+  "name": "Example Holdings Limited",
+  "country": "GB",
+  "registrationNumber": "12345678",
+  "register": "UK Companies House",
+  "legalForm": "Private limited company",
+  "status": "Active",
+  "incorporationDate": "2015-04-12",
+  "address": {
+    "line1": "1 Example Street",
+    "city": "London",
+    "postalCode": "EC1A 1AA",
+    "country": "GB"
+  },
+  "officers": [
+    { "name": "Jane Smith", "role": "Director", "nationality": "GB" }
+  ],
+  "ubos": [
+    { "name": "Jane Smith", "ownershipPct": 75.0, "nationality": "GB" }
+  ]
+}

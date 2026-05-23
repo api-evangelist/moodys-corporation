@@ -1,0 +1,19 @@
+{
+  "name": "MoodysEntity",
+  "description": "Structure of a Moody's Orbis / KYC legal entity record.",
+  "fields": [
+    { "name": "entityId", "type": "string", "required": true },
+    { "name": "bvdId", "type": "string" },
+    { "name": "lei", "type": "string" },
+    { "name": "name", "type": "string", "required": true },
+    { "name": "country", "type": "string", "required": true },
+    { "name": "registrationNumber", "type": "string" },
+    { "name": "register", "type": "string" },
+    { "name": "legalForm", "type": "string" },
+    { "name": "status", "type": "string", "enum": ["Active","Inactive","Dissolved","Liquidation"] },
+    { "name": "incorporationDate", "type": "date" },
+    { "name": "address", "type": "object" },
+    { "name": "officers", "type": "array" },
+    { "name": "ubos", "type": "array" }
+  ]
+}

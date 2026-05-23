@@ -1,0 +1,55 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/api-evangelist/moodys-corporation/json-schema/moodys-corporation-entity-schema.json",
+  "title": "Moody's Orbis / KYC Entity",
+  "description": "A legal entity record returned from Moody's Orbis (Bureau van Dijk) or Moody's KYC (Kompany / Maxsight) APIs.",
+  "type": "object",
+  "required": ["entityId", "name", "country"],
+  "properties": {
+    "entityId": { "type": "string" },
+    "bvdId": { "type": "string", "description": "Bureau van Dijk identifier." },
+    "lei": { "type": "string" },
+    "name": { "type": "string" },
+    "tradingNames": { "type": "array", "items": { "type": "string" } },
+    "country": { "type": "string" },
+    "registrationNumber": { "type": "string" },
+    "register": { "type": "string", "description": "Source government register, e.g. UK Companies House." },
+    "legalForm": { "type": "string" },
+    "status": { "type": "string", "enum": ["Active","Inactive","Dissolved","Liquidation","Unknown"] },
+    "incorporationDate": { "type": "string", "format": "date" },
+    "address": {
+      "type": "object",
+      "properties": {
+        "line1": { "type": "string" },
+        "line2": { "type": "string" },
+        "city": { "type": "string" },
+        "region": { "type": "string" },
+        "postalCode": { "type": "string" },
+        "country": { "type": "string" }
+      }
+    },
+    "industryCodes": { "type": "array", "items": { "type": "string" } },
+    "officers": { "type": "array", "items": { "$ref": "#/$defs/Person" } },
+    "ubos": { "type": "array", "items": { "$ref": "#/$defs/Person" } },
+    "documents": { "type": "array", "items": {
+      "type": "object",
+      "properties": {
+        "type": { "type": "string" },
+        "filedDate": { "type": "string", "format": "date" },
+        "url": { "type": "string", "format": "uri" }
+      }
+    } }
+  },
+  "$defs": {
+    "Person": {
+      "type": "object",
+      "properties": {
+        "name": { "type": "string" },
+        "role": { "type": "string" },
+        "ownershipPct": { "type": "number" },
+        "nationality": { "type": "string" },
+        "dateOfBirth": { "type": "string", "format": "date" }
+      }
+    }
+  }
+}

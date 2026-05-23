@@ -1,0 +1,18 @@
+{
+  "eventId": "RMS-HU-2026-05-LANDFALL-FL",
+  "name": "Hurricane Aiden",
+  "peril": "Hurricane",
+  "region": "US Atlantic Basin",
+  "occurrenceDate": "2026-05-18",
+  "magnitude": {
+    "saffirSimpson": 4,
+    "maxWindMph": 145,
+    "minPressureMb": 935
+  },
+  "modeledLoss": {
+    "groundUp": 38500000000,
+    "insured": 22000000000,
+    "currency": "USD"
+  },
+  "footprintUrl": "https://api.rms.com/events/RMS-HU-2026-05-LANDFALL-FL/footprint"
+}

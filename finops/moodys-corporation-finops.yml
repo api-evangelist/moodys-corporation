@@ -1,0 +1,60 @@
+# API Commons FinOps 0.1 — FOCUS-aligned
+specVersion: "0.1"
+provider:
+  id: moodys-corporation
+  name: Moody's Corporation
+  url: https://www.moodys.com/
+
+billingModel:
+  type: enterprise-subscription
+  cycle: annual
+  currency: USD
+  invoicing: contract-defined
+  selfService: false
+  description: >-
+    Moody's Corporation prices its Moody's Ratings research feeds and Moody's
+    Analytics product APIs through enterprise subscriptions negotiated with a
+    sales representative. Charges typically cover data scope, jurisdiction
+    breadth, user seats, query caps, and entitlement to specific datasets.
+
+chargeCategories:
+  - category: Subscription
+    description: Recurring fees for product entitlement (e.g. Data Buffet, Orbis, RMS IRP).
+    focusChargeCategory: Usage
+    focusServiceCategory: AnalyticsAndData
+  - category: Per-Query Overages
+    description: Overage charges where contract caps query volume or data download.
+    focusChargeCategory: Usage
+  - category: Implementation / Onboarding
+    description: One-time professional-services fees for onboarding, integration, model calibration.
+    focusChargeCategory: Other
+
+costAttribution:
+  dimensions:
+    - product
+    - dataset
+    - jurisdiction
+    - user
+    - api-key
+  recommended_tags:
+    - business-unit
+    - cost-center
+    - portfolio
+    - use-case
+
+optimization_guidance:
+  - Reuse OAuth2 bearer tokens until expiry rather than re-issuing per request.
+  - Use asynchronous baskets and orders on Data Buffet for bulk retrieval to stay under per-second caps.
+  - Cache Orbis entity lookups and re-resolve only when KYC review windows demand refresh.
+  - Negotiate query / seat caps to match measured usage; Moody's products are billed on entitlement breadth, not pay-as-you-go.
+
+reporting:
+  customerVisibility:
+    invoiceDetail: contract-defined
+    usageDashboard: hub.moodysanalytics.com
+  costExport: contract-defined
+
+absences:
+  - No public FOCUS-format cost export documented.
+  - No public per-call USD price published on developer.moodys.com.
+  - No public dashboard URL for end-user cost monitoring outside the customer hub.

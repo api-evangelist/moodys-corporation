@@ -1,0 +1,33 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/api-evangelist/moodys-corporation/json-schema/moodys-corporation-cat-event-schema.json",
+  "title": "Moody's RMS Catastrophe Event",
+  "description": "A modeled or real-world catastrophe event from the Moody's RMS Intelligent Risk Platform.",
+  "type": "object",
+  "required": ["eventId", "peril", "region"],
+  "properties": {
+    "eventId": { "type": "string" },
+    "name": { "type": "string" },
+    "peril": {
+      "type": "string",
+      "enum": ["Hurricane","Earthquake","Flood","SevereConvectiveStorm","Wildfire","Tornado","Tsunami","Terrorism","Cyber","Pandemic"]
+    },
+    "region": { "type": "string" },
+    "occurrenceDate": { "type": "string", "format": "date" },
+    "magnitude": {
+      "type": "object",
+      "description": "Peril-specific magnitude (e.g. Saffir-Simpson category, moment magnitude, fire size in acres).",
+      "additionalProperties": true
+    },
+    "modeledLoss": {
+      "type": "object",
+      "properties": {
+        "groundUp": { "type": "number" },
+        "insured": { "type": "number" },
+        "reinsured": { "type": "number" },
+        "currency": { "type": "string" }
+      }
+    },
+    "footprintUrl": { "type": "string", "format": "uri" }
+  }
+}

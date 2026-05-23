@@ -1,0 +1,14 @@
+{
+  "ratingId": "MIS-2026-05-20-AAPL-LT",
+  "rating": "Aaa",
+  "ratingScale": "LongTerm",
+  "outlook": "Stable",
+  "watch": "None",
+  "ratingDate": "2026-05-20",
+  "subjectType": "Issuer",
+  "issuerId": "MIS-ISSUER-AAPL",
+  "lei": "HWUPKR0MPOU8FGXBT394",
+  "country": "US",
+  "currency": "USD",
+  "researchUrl": "https://ratings.moodys.com/issuer/AAPL"
+}

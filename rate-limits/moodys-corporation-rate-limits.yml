@@ -1,0 +1,68 @@
+# API Commons Rate Limits 0.1
+specVersion: "0.1"
+provider:
+  id: moodys-corporation
+  name: Moody's Corporation
+  url: https://www.moodys.com/
+
+rateLimits:
+  - api: moodys-data-buffet-api
+    scope: per-key
+    requestsPerSecond: 1
+    monthlyDataLimit:
+      value: 1
+      unit: GB
+    enforcement: hard
+    backoffStatus: 429
+    source: https://github.com/moodysanalytics/databuffet-api-codesamples
+    notes: >-
+      The Data Buffet code samples document a 1 request/second cap and a 1 GB
+      per month data-volume cap per API key. Bulk retrieval should use the
+      asynchronous baskets/orders pattern to stay under the per-second cap.
+
+  - api: moodys-scenario-studio-api
+    scope: per-key
+    requestsPerSecond: contract-defined
+    enforcement: hard
+    backoffStatus: 429
+    source: https://github.com/moodysanalytics/scenario-studio-api-codesamples
+    notes: Specific per-second caps are not publicly published; contract-defined.
+
+  - api: moodys-developer-platform-oauth2
+    scope: per-client-id
+    requestsPerMinute: contract-defined
+    enforcement: hard
+    backoffStatus: 429
+    notes: >-
+      Token issuance is rate-limited per client_id; reuse bearer tokens until
+      expiry (1 hour) instead of re-issuing per request.
+
+  - api: moodys-orbis-api
+    scope: per-key
+    requestsPerSecond: contract-defined
+    enforcement: hard
+    backoffStatus: 429
+
+  - api: moodys-kyc-api
+    scope: per-key
+    requestsPerSecond: contract-defined
+    enforcement: hard
+    backoffStatus: 429
+
+  - api: moodys-rms-irp-api
+    scope: per-tenant
+    requestsPerSecond: contract-defined
+    enforcement: hard
+    backoffStatus: 429
+
+quotas:
+  - api: moodys-data-buffet-api
+    name: Monthly data volume
+    value: 1
+    unit: GB
+    period: month
+    scope: per-key
+
+absences:
+  - No public per-product rate-limit page documenting numeric caps across all Moody's Analytics APIs.
+  - No documented header (e.g. X-RateLimit-Remaining) standardization across Moody's Analytics products.

@@ -1,0 +1,16 @@
+{
+  "name": "MoodysTimeSeries",
+  "description": "Structure of a Moody's Data Buffet time-series record.",
+  "fields": [
+    { "name": "mnemonic", "type": "string", "required": true },
+    { "name": "name", "type": "string" },
+    { "name": "geography", "type": "string" },
+    { "name": "source", "type": "string" },
+    { "name": "category", "type": "string" },
+    { "name": "frequency", "type": "string", "enum": ["Daily","Weekly","Monthly","Quarterly","Annual"] },
+    { "name": "transformation", "type": "string", "enum": ["None","PctChange","YoYPctChange","Difference","Log","Index"] },
+    { "name": "units", "type": "string" },
+    { "name": "vintage", "type": "string" },
+    { "name": "observations", "type": "array" }
+  ]
+}

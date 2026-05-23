@@ -1,0 +1,58 @@
+# API Commons Plans 0.1
+specVersion: "0.1"
+provider:
+  id: moodys-corporation
+  name: Moody's Corporation
+  url: https://www.moodys.com/
+  description: >-
+    Moody's Corporation does not publish self-service public pricing for its
+    Moody's Ratings or Moody's Analytics API products. Access is provisioned
+    through sales engagements via enterprise subscription agreements scoped to
+    the specific Moody's Analytics product (Data Buffet, Scenario Studio,
+    AutoCycle, ECCL, ImpairmentStudio, Orbis, RMS Intelligent Risk Platform,
+    Maxsight / Kompany KYC, Passfort, ESG & Climate). Documented usage
+    constraints (rate limits and data-volume caps) appear on the per-product
+    Swagger pages where published; this file documents the commercial model
+    as enterprise-quoted.
+
+plans:
+  - id: enterprise
+    name: Enterprise (Quote)
+    description: >-
+      Negotiated enterprise subscription scoped per product, with data
+      volumes, user seats, jurisdictions, and concurrency capped by contract.
+      Public pricing is not published; sales contact is required for a quote.
+    pricingModel: enterprise-quote
+    contact:
+      type: sales
+      url: https://www.moodys.com/web/en/us/about/contact.html
+      email: helpeconomy@moodys.com
+    features:
+      - All Moody's Analytics product APIs
+      - OAuth2 client-credentials authentication
+      - HMAC request signing on legacy product APIs
+      - Quoted SLA, support, and uptime targets per product
+      - Per-product user / seat / query caps as agreed
+    limits:
+      requestsPerSecond: per-product (e.g. Data Buffet caps at 1 req/sec per key)
+      monthlyDataVolume: per-product (e.g. Data Buffet caps at 1 GB / month per key)
+    notes:
+      - Most Moody's Analytics products require an Moody's Analytics login at hub.moodysanalytics.com to provision API credentials.
+      - Pricing varies materially by product, data scope, and jurisdiction breadth.
+
+  - id: code-samples-public
+    name: Public Code Samples (Free)
+    description: >-
+      The Moody's Analytics GitHub organization publishes open-source code
+      samples (Python, R, Java, C#) and a Python CLI (apic) under the
+      moodysanalytics organization. Code is freely usable, but API access
+      still requires an Enterprise subscription.
+    pricingModel: free
+    contact:
+      type: github
+      url: https://github.com/moodysanalytics
+
+absences:
+  - No public self-service developer tier or free sandbox key listed publicly.
+  - No published per-call USD pricing on the developer portal.
+  - No public price list page.

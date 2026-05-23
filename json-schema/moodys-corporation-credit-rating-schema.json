@@ -1,0 +1,41 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/api-evangelist/moodys-corporation/json-schema/moodys-corporation-credit-rating-schema.json",
+  "title": "Moody's Credit Rating",
+  "description": "A credit rating published by Moody's Ratings (Moody's Investors Service) on an issuer or instrument.",
+  "type": "object",
+  "required": ["ratingId", "rating", "ratingScale", "ratingDate", "subjectType"],
+  "properties": {
+    "ratingId": { "type": "string" },
+    "rating": {
+      "type": "string",
+      "description": "Moody's long-term rating symbol (e.g. Aaa, Aa1, Baa3, B1, Caa2, C).",
+      "enum": ["Aaa","Aa1","Aa2","Aa3","A1","A2","A3","Baa1","Baa2","Baa3","Ba1","Ba2","Ba3","B1","B2","B3","Caa1","Caa2","Caa3","Ca","C","WR","NR"]
+    },
+    "ratingScale": {
+      "type": "string",
+      "enum": ["LongTerm","ShortTerm","NationalScale","StructuredFinance"]
+    },
+    "outlook": {
+      "type": "string",
+      "enum": ["Positive","Stable","Negative","Developing","NotApplicable"]
+    },
+    "watch": {
+      "type": "string",
+      "enum": ["UpgradeReview","DowngradeReview","DirectionUncertain","None"]
+    },
+    "ratingDate": { "type": "string", "format": "date" },
+    "subjectType": {
+      "type": "string",
+      "enum": ["Issuer","Instrument","Tranche","Sovereign","SubSovereign","StructuredFinance"]
+    },
+    "issuerId": { "type": "string" },
+    "instrumentId": { "type": "string" },
+    "lei": { "type": "string" },
+    "cusip": { "type": "string" },
+    "isin": { "type": "string" },
+    "country": { "type": "string" },
+    "currency": { "type": "string" },
+    "researchUrl": { "type": "string", "format": "uri" }
+  }
+}

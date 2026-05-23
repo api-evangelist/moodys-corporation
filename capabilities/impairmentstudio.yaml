@@ -1,0 +1,42 @@
+name: impairmentstudio
+title: Moody's ImpairmentStudio CECL Analysis
+description: >-
+  Submit CECL impairment analyses to ImpairmentStudio by uploading an input
+  dataset, triggering an analysis run, polling job status, and downloading
+  analysis output. Powered by the apic Python CLI.
+provider: moodys-corporation
+api: moodys-impairmentstudio-api
+version: 0.1.0
+
+inputs:
+  - name: input_zip
+    type: file
+    required: true
+    description: Zip archive of ImpairmentStudio input files.
+  - name: analysis_id
+    type: string
+    required: false
+    description: Identifier of a previously configured analysis to execute.
+
+outputs:
+  - name: job_id
+    type: string
+  - name: output_url
+    type: string
+
+operations:
+  - operationId: importInputs
+    method: POST
+    path: /import
+  - operationId: runAnalysis
+    method: POST
+    path: /analyses/{analysisId}/run
+  - operationId: downloadOutput
+    method: GET
+    path: /analyses/{analysisId}/output
+
+failure_modes:
+  - code: invalid_input
+    description: Input zip failed schema validation.
+  - code: job_failed
+    description: Analysis run produced an error; inspect job error payload.

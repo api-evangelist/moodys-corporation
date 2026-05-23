@@ -1,0 +1,20 @@
+{
+  "name": "MoodysCreditRating",
+  "description": "Structure of a Moody's Ratings credit rating record.",
+  "fields": [
+    { "name": "ratingId", "type": "string", "required": true },
+    { "name": "rating", "type": "string", "required": true, "examples": ["Aaa","Baa3","Ba1"] },
+    { "name": "ratingScale", "type": "string", "required": true, "enum": ["LongTerm","ShortTerm","NationalScale","StructuredFinance"] },
+    { "name": "outlook", "type": "string", "enum": ["Positive","Stable","Negative","Developing"] },
+    { "name": "watch", "type": "string", "enum": ["UpgradeReview","DowngradeReview","DirectionUncertain","None"] },
+    { "name": "ratingDate", "type": "date", "required": true },
+    { "name": "subjectType", "type": "string", "required": true, "enum": ["Issuer","Instrument","Sovereign","StructuredFinance"] },
+    { "name": "issuerId", "type": "string" },
+    { "name": "instrumentId", "type": "string" },
+    { "name": "lei", "type": "string" },
+    { "name": "isin", "type": "string" },
+    { "name": "cusip", "type": "string" },
+    { "name": "country", "type": "string" },
+    { "name": "currency", "type": "string" }
+  ]
+}

@@ -1,330 +1,286 @@
 aid: moodys-corporation
 name: Moody's Corporation
 description: >-
-  Moody's Corporation (NYSE: MCO) is a global integrated risk-assessment firm
-  operating through two segments: Moody's Ratings (Moody's Investors Service),
-  which publishes credit ratings and assessment services on debt obligations,
-  and Moody's Analytics, which provides data, software, research, and APIs
-  spanning economic data, credit risk, KYC/AML, ESG, climate, and catastrophe
-  modeling. Moody's Analytics products are exposed through multiple developer
-  APIs and a portal at developer.moodys.com, with deeper API surfaces published
-  at api.economy.com (Data Buffet, Scenario Studio, AutoCycle, ECCL) and
-  through subsidiary brands including Bureau van Dijk (Orbis), RMS (catastrophe
-  risk), Kompany / Passfort (KYC), and Four Twenty Seven (climate).
+  Moody's Corporation (NYSE: MCO) is a global integrated risk-assessment firm operating through two segments: Moody's
+  Ratings (Moody's Investors Service), which publishes credit ratings and assessment services on debt obligations, and
+  Moody's Analytics, which provides data, software, research, and APIs spanning economic data, credit risk, KYC/AML,
+  ESG, climate, and catastrophe modeling. Moody's Analytics products are exposed through multiple developer APIs and a
+  portal at developer.moodys.com, with deeper API surfaces published at api.economy.com (Data Buffet, Scenario Studio,
+  AutoCycle, ECCL) and through subsidiary brands including Bureau van Dijk (Orbis), RMS (catastrophe risk), Kompany /
+  Passfort (KYC), and Four Twenty Seven (climate).
 image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
 url: https://github.com/api-evangelist/moodys-corporation/blob/main/apis.yml
 modified: '2026-05-23'
 specificationVersion: '0.16'
 tags:
-- Analytics
-- Catastrophe Risk
-- Climate Risk
-- Compliance
-- Credit Ratings
-- Economic Data
-- ESG
-- Financial Data
-- KYC
-- Risk
-
-common:
-- url: https://www.moodys.com/
-  type: Portal
-- url: https://www.moodys.com/web/en/us/insights.html
-  type: Blog
-- url: https://www.moodys.com/web/en/us/about/legal/terms-of-use.html
-  type: TermsOfService
-- url: https://www.moodys.com/web/en/us/about/legal/privacy-policy.html
-  type: PrivacyPolicy
-- url: https://github.com/moodysanalytics
-  type: GitHubOrganization
-- url: https://ir.moodys.com/
-  type: InvestorRelations
-- url: https://www.moodys.com/web/en/us/about/contact.html
-  type: Contact
-- url: https://www.moodys.com/web/en/us/insights/all.html
-  type: Insights
-
-apis:
-- aid: moodys-corporation:moodys-ratings
-  name: Moody's Ratings (Moody's Investors Service)
-  description: >-
-    Moody's Ratings (formerly Moody's Investors Service / MIS) publishes credit
-    ratings, research, and risk analysis on debt obligations issued by
-    corporations, governments, and structured finance vehicles. Ratings,
-    research, and the issuer/instrument reference data underpin the firm's
-    research feeds and licensed data products consumed by institutional
-    subscribers and downstream data redistributors.
-  tags:
+  - Analytics
+  - Catastrophe Risk
+  - Climate Risk
+  - Compliance
   - Credit Ratings
-  - Debt
-  - Fixed Income
-  - Issuer Reference Data
-  - Research
-  - Sovereign
-  - Structured Finance
-  humanURL: https://ratings.moodys.com/
-  baseURL: https://ratings.moodys.com/
-  image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
-  properties:
-  - url: https://ratings.moodys.com/
+  - Economic Data
+  - ESG
+  - Financial Data
+  - KYC
+  - Risk
+  - Fortune 1000
+common:
+  - url: https://www.moodys.com/
     type: Portal
+  - url: https://www.moodys.com/web/en/us/insights.html
+    type: Blog
   - url: https://www.moodys.com/web/en/us/about/legal/terms-of-use.html
     type: TermsOfService
-
-- aid: moodys-corporation:developer-platform
-  name: Moody's Analytics Developer Platform
-  description: >-
-    Umbrella developer platform spanning Moody's Analytics APIs across economic
-    data, credit risk, KYC, ESG, climate, and risk modeling. Hosts API
-    catalogs, OpenAPI specifications, authentication (OAuth2 client credentials
-    and HMAC), sandbox keys, and code samples for downstream Moody's API
-    products including Data Buffet, Scenario Studio, AutoCycle, ECCL,
-    ImpairmentStudio, RMS Intelligent Risk Platform, Orbis, and Passfort.
-  tags:
-  - API Catalog
-  - Developer Portal
-  - OAuth2
-  - SDKs
-  humanURL: https://developer.moodys.com/
-  baseURL: https://developer.moodys.com/
-  image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
-  properties:
-  - url: https://developer.moodys.com/
-    type: Portal
-  - url: https://hub.moodysanalytics.com/
-    type: Hub
+  - url: https://www.moodys.com/web/en/us/about/legal/privacy-policy.html
+    type: PrivacyPolicy
   - url: https://github.com/moodysanalytics
     type: GitHubOrganization
-  - url: openapi/moodys-analytics-developer-openapi.yml
-    type: OpenAPI
-  - url: capabilities/developer-platform-authentication.yaml
-    type: NaftikoCapability
-
-- aid: moodys-corporation:data-buffet-api
-  name: Moody's Analytics Data Buffet API
-  description: >-
-    Programmatic access to international and subnational economic, demographic,
-    and financial time-series data and forecasts. Supports retrieval of single
-    or multi-series, basket creation, asynchronous bulk orders, and search
-    against the Data Buffet repository. Authentication is OAuth2 client
-    credentials with HMAC signing; rate-limited at one request per second and
-    a 1 GB monthly data cap per key.
-  tags:
-  - Demographics
-  - Economic Data
-  - Forecasts
-  - Time Series
-  humanURL: https://www.economy.com/products/tools/data-buffet
-  baseURL: https://api.economy.com/data/v1
-  image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
-  properties:
-  - url: https://api.economy.com/data/v1/swagger
-    type: Documentation
-  - url: https://github.com/moodysanalytics/databuffet-api-codesamples
-    type: GitHubOrganization
-  - url: openapi/moodys-data-buffet-api-openapi.yml
-    type: OpenAPI
-  - url: capabilities/data-buffet.yaml
-    type: NaftikoCapability
-
-- aid: moodys-corporation:scenario-studio-api
-  name: Moody's Analytics Scenario Studio API
-  description: >-
-    Programmatic access to the Scenario Studio macroeconomic scenario platform,
-    enabling automatic retrieval of custom scenarios generated against the
-    Moody's Analytics Global Macroeconomic Model. Supports OAuth and HMAC
-    authentication and returns JSON responses; a Postman collection and Python
-    / R client libraries ship with the published code samples.
-  tags:
-  - Economic Models
-  - Forecasting
-  - Macroeconomic
-  - Scenarios
-  humanURL: https://hub.moodysanalytics.com/products
-  baseURL: https://api.economy.com/scenario-studio/v2
-  image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
-  properties:
-  - url: https://api.economy.com/scenario-studio/v2/swagger
-    type: Documentation
-  - url: https://github.com/moodysanalytics/scenario-studio-api-codesamples
-    type: GitHubOrganization
-
-- aid: moodys-corporation:autocycle-api
-  name: Moody's AutoCycle API
-  description: >-
-    Retrieves forecasts of vehicle prices from AutoCycle models, integrating
-    Moody's Analytics economic data and scenarios for automotive residual
-    value forecasting.
-  tags:
-  - Automotive
-  - Forecasts
-  - Residual Value
-  - Vehicle Pricing
-  humanURL: https://hub.moodysanalytics.com/products
-  baseURL: https://api.economy.com/autocycle/v1
-  image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
-  properties:
-  - url: https://api.economy.com/autocycle/v1/swagger
-    type: Documentation
-
-- aid: moodys-corporation:eccl-api
-  name: Moody's Expected Consumer Credit Loss (ECCL) API
-  description: >-
-    Retrieves expected consumer credit loss forecasts under baseline and
-    stress scenarios. Combines customer data, economic data from Moody's
-    Analytics, and consumer credit data for credit risk modeling and CCAR /
-    CECL workflows.
-  tags:
-  - CECL
-  - Consumer Credit
-  - Credit Loss
-  - Forecasts
-  - Risk
-  humanURL: https://hub.moodysanalytics.com/products
-  baseURL: https://api.economy.com/eccl/v1
-  image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
-  properties:
-  - url: https://api.economy.com/eccl/v1/swagger
-    type: Documentation
-
-- aid: moodys-corporation:impairmentstudio-api
-  name: Moody's ImpairmentStudio API
-  description: >-
-    Programmatic interface to ImpairmentStudio for CECL impairment estimation.
-    Supports importing input datasets, triggering analyses, polling job
-    status, and downloading analysis outputs via the apic Python CLI or
-    direct API calls.
-  tags:
-  - CECL
-  - Credit Loss
-  - Impairment
-  - Reserve Modeling
-  humanURL: https://www.moodys.com/web/en/us/products/impairmentstudio.html
-  baseURL: https://api.moodys.com/impairmentstudio
-  image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
-  properties:
-  - url: https://github.com/moodysanalytics/apic
-    type: CLI
-  - url: capabilities/impairmentstudio.yaml
-    type: NaftikoCapability
-
-- aid: moodys-corporation:orbis-api
-  name: Moody's Orbis (Bureau van Dijk) API
-  description: >-
-    Access to Orbis, the Bureau van Dijk company information database covering
-    hundreds of millions of public and private companies worldwide with
-    ownership, financials, officers, beneficial owners, ESG, and corporate
-    family-tree data. The Orbis API and bulk data integrations feed KYC,
-    compliance, third-party risk, and credit workflows.
-  tags:
-  - Beneficial Ownership
-  - Company Data
-  - Corporate Family Tree
-  - Financials
-  - KYC
-  - Reference Data
-  humanURL: https://www.bvdinfo.com/en-gb/our-products/data/international/orbis
-  baseURL: https://orbis.bvdinfo.com/
-  image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
-  properties:
-  - url: https://www.bvdinfo.com/en-gb/our-products/data/integration/apis-and-feeds
-    type: Documentation
-  - url: capabilities/orbis-entity-lookup.yaml
-    type: NaftikoCapability
-
-- aid: moodys-corporation:kyc-api
-  name: Moody's KYC API (Kompany / Maxsight Entity Verification)
-  description: >-
-    Verifies businesses against authoritative primary-source government
-    registers in real time, returning legal entity records, ultimate
-    beneficial owners, registered documents, and AML / sanctions screening
-    signals. Powers the Maxsight Entity Verification API and Kompany Live
-    Search.
-  tags:
-  - Anti-Money Laundering
-  - Compliance
-  - Entity Verification
-  - KYC
-  - Risk
-  - Sanctions Screening
-  humanURL: https://www.kompany.com/kycapi/discover
-  baseURL: https://api.kompany.com/
-  image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
-  properties:
-  - url: https://www.kompany.com/kycapi/console-v2
-    type: Documentation
-  - url: capabilities/kyc-entity-verification.yaml
-    type: NaftikoCapability
-
-- aid: moodys-corporation:passfort-api
-  name: Moody's Passfort Lifecycle API
-  description: >-
-    Customer lifecycle and KYC orchestration platform enabling onboarding,
-    perpetual KYC, customer due diligence, and supplier risk workflows.
-    Exposes a Custom Check Framework so integrators can plug additional data
-    providers into Passfort's policy engine.
-  tags:
-  - Customer Due Diligence
-  - KYC
-  - Onboarding
-  - Perpetual KYC
-  - Workflow
-  humanURL: https://www.passfort.com/
-  baseURL: https://api.passfort.com/
-  image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
-  properties:
-  - url: https://github.com/moodysanalytics/MoodysAnalytics-PassFort-CustomCheckFramework
-    type: SDK
-
-- aid: moodys-corporation:rms-irp-api
-  name: Moody's RMS Intelligent Risk Platform (IRP) API
-  description: >-
-    APIs for the RMS Intelligent Risk Platform covering catastrophe modeling,
-    exposure management, and event response across natural perils (hurricane,
-    earthquake, flood, severe convective storm, wildfire), terrorism, cyber,
-    and life / health events for insurance and reinsurance use cases.
-  tags:
-  - Catastrophe Risk
-  - Cyber Risk
-  - Exposure Management
-  - Insurance
-  - Reinsurance
-  - Risk Modeling
-  humanURL: https://www.rms.com/products/risk-modeler
-  baseURL: https://api.rms.com/
-  image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
-  properties:
-  - url: https://www.rms.com/products/risk-modeler
-    type: Documentation
-
-- aid: moodys-corporation:esg-climate-api
-  name: Moody's ESG & Climate Solutions API
-  description: >-
-    ESG scores, controversies, climate physical and transition risk metrics
-    sourced from Four Twenty Seven and Moody's ESG Solutions. Used for
-    portfolio screening, sustainable-finance reporting, climate scenario
-    analysis, and regulatory disclosure (TCFD / CSRD / SFDR).
-  tags:
-  - Climate Risk
-  - Controversies
-  - CSRD
-  - ESG Scores
-  - Physical Risk
-  - SFDR
-  - TCFD
-  - Transition Risk
-  humanURL: https://www.moodys.com/web/en/us/capabilities/esg-and-climate.html
-  baseURL: https://api.moodys.com/esg
-  image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
-  properties:
-  - url: https://www.moodys.com/web/en/us/capabilities/esg-and-climate.html
-    type: Documentation
-
+  - url: https://ir.moodys.com/
+    type: InvestorRelations
+  - url: https://www.moodys.com/web/en/us/about/contact.html
+    type: Contact
+  - url: https://www.moodys.com/web/en/us/insights/all.html
+    type: Insights
+apis:
+  - aid: moodys-corporation:moodys-ratings
+    name: Moody's Ratings (Moody's Investors Service)
+    description: >-
+      Moody's Ratings (formerly Moody's Investors Service / MIS) publishes credit ratings, research, and risk analysis
+      on debt obligations issued by corporations, governments, and structured finance vehicles. Ratings, research, and
+      the issuer/instrument reference data underpin the firm's research feeds and licensed data products consumed by
+      institutional subscribers and downstream data redistributors.
+    tags:
+      - Credit Ratings
+      - Debt
+      - Fixed Income
+      - Issuer Reference Data
+      - Research
+      - Sovereign
+      - Structured Finance
+    humanURL: https://ratings.moodys.com/
+    baseURL: https://ratings.moodys.com/
+    image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+    properties:
+      - url: https://ratings.moodys.com/
+        type: Portal
+      - url: https://www.moodys.com/web/en/us/about/legal/terms-of-use.html
+        type: TermsOfService
+  - aid: moodys-corporation:developer-platform
+    name: Moody's Analytics Developer Platform
+    description: >-
+      Umbrella developer platform spanning Moody's Analytics APIs across economic data, credit risk, KYC, ESG, climate,
+      and risk modeling. Hosts API catalogs, OpenAPI specifications, authentication (OAuth2 client credentials and
+      HMAC), sandbox keys, and code samples for downstream Moody's API products including Data Buffet, Scenario Studio,
+      AutoCycle, ECCL, ImpairmentStudio, RMS Intelligent Risk Platform, Orbis, and Passfort.
+    tags:
+      - API Catalog
+      - Developer Portal
+      - OAuth2
+      - SDKs
+    humanURL: https://developer.moodys.com/
+    baseURL: https://developer.moodys.com/
+    image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+    properties:
+      - url: https://developer.moodys.com/
+        type: Portal
+      - url: https://hub.moodysanalytics.com/
+        type: Hub
+      - url: https://github.com/moodysanalytics
+        type: GitHubOrganization
+      - url: openapi/moodys-analytics-developer-openapi.yml
+        type: OpenAPI
+  - aid: moodys-corporation:data-buffet-api
+    name: Moody's Analytics Data Buffet API
+    description: >-
+      Programmatic access to international and subnational economic, demographic, and financial time-series data and
+      forecasts. Supports retrieval of single or multi-series, basket creation, asynchronous bulk orders, and search
+      against the Data Buffet repository. Authentication is OAuth2 client credentials with HMAC signing; rate-limited at
+      one request per second and a 1 GB monthly data cap per key.
+    tags:
+      - Demographics
+      - Economic Data
+      - Forecasts
+      - Time Series
+    humanURL: https://www.economy.com/products/tools/data-buffet
+    baseURL: https://api.economy.com/data/v1
+    image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+    properties:
+      - url: https://api.economy.com/data/v1/swagger
+        type: Documentation
+      - url: https://github.com/moodysanalytics/databuffet-api-codesamples
+        type: GitHubOrganization
+      - url: openapi/moodys-data-buffet-api-openapi.yml
+        type: OpenAPI
+  - aid: moodys-corporation:scenario-studio-api
+    name: Moody's Analytics Scenario Studio API
+    description: >-
+      Programmatic access to the Scenario Studio macroeconomic scenario platform, enabling automatic retrieval of custom
+      scenarios generated against the Moody's Analytics Global Macroeconomic Model. Supports OAuth and HMAC
+      authentication and returns JSON responses; a Postman collection and Python / R client libraries ship with the
+      published code samples.
+    tags:
+      - Economic Models
+      - Forecasting
+      - Macroeconomic
+      - Scenarios
+    humanURL: https://hub.moodysanalytics.com/products
+    baseURL: https://api.economy.com/scenario-studio/v2
+    image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+    properties:
+      - url: https://api.economy.com/scenario-studio/v2/swagger
+        type: Documentation
+      - url: https://github.com/moodysanalytics/scenario-studio-api-codesamples
+        type: GitHubOrganization
+  - aid: moodys-corporation:autocycle-api
+    name: Moody's AutoCycle API
+    description: >-
+      Retrieves forecasts of vehicle prices from AutoCycle models, integrating Moody's Analytics economic data and
+      scenarios for automotive residual value forecasting.
+    tags:
+      - Automotive
+      - Forecasts
+      - Residual Value
+      - Vehicle Pricing
+    humanURL: https://hub.moodysanalytics.com/products
+    baseURL: https://api.economy.com/autocycle/v1
+    image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+    properties:
+      - url: https://api.economy.com/autocycle/v1/swagger
+        type: Documentation
+  - aid: moodys-corporation:eccl-api
+    name: Moody's Expected Consumer Credit Loss (ECCL) API
+    description: >-
+      Retrieves expected consumer credit loss forecasts under baseline and stress scenarios. Combines customer data,
+      economic data from Moody's Analytics, and consumer credit data for credit risk modeling and CCAR / CECL workflows.
+    tags:
+      - CECL
+      - Consumer Credit
+      - Credit Loss
+      - Forecasts
+      - Risk
+    humanURL: https://hub.moodysanalytics.com/products
+    baseURL: https://api.economy.com/eccl/v1
+    image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+    properties:
+      - url: https://api.economy.com/eccl/v1/swagger
+        type: Documentation
+  - aid: moodys-corporation:impairmentstudio-api
+    name: Moody's ImpairmentStudio API
+    description: >-
+      Programmatic interface to ImpairmentStudio for CECL impairment estimation. Supports importing input datasets,
+      triggering analyses, polling job status, and downloading analysis outputs via the apic Python CLI or direct API
+      calls.
+    tags:
+      - CECL
+      - Credit Loss
+      - Impairment
+      - Reserve Modeling
+    humanURL: https://www.moodys.com/web/en/us/products/impairmentstudio.html
+    baseURL: https://api.moodys.com/impairmentstudio
+    image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+    properties:
+      - url: https://github.com/moodysanalytics/apic
+        type: CLI
+  - aid: moodys-corporation:orbis-api
+    name: Moody's Orbis (Bureau van Dijk) API
+    description: >-
+      Access to Orbis, the Bureau van Dijk company information database covering hundreds of millions of public and
+      private companies worldwide with ownership, financials, officers, beneficial owners, ESG, and corporate
+      family-tree data. The Orbis API and bulk data integrations feed KYC, compliance, third-party risk, and credit
+      workflows.
+    tags:
+      - Beneficial Ownership
+      - Company Data
+      - Corporate Family Tree
+      - Financials
+      - KYC
+      - Reference Data
+    humanURL: https://www.bvdinfo.com/en-gb/our-products/data/international/orbis
+    baseURL: https://orbis.bvdinfo.com/
+    image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+    properties:
+      - url: https://www.bvdinfo.com/en-gb/our-products/data/integration/apis-and-feeds
+        type: Documentation
+  - aid: moodys-corporation:kyc-api
+    name: Moody's KYC API (Kompany / Maxsight Entity Verification)
+    description: >-
+      Verifies businesses against authoritative primary-source government registers in real time, returning legal entity
+      records, ultimate beneficial owners, registered documents, and AML / sanctions screening signals. Powers the
+      Maxsight Entity Verification API and Kompany Live Search.
+    tags:
+      - Anti-Money Laundering
+      - Compliance
+      - Entity Verification
+      - KYC
+      - Risk
+      - Sanctions Screening
+    humanURL: https://www.kompany.com/kycapi/discover
+    baseURL: https://api.kompany.com/
+    image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+    properties:
+      - url: https://www.kompany.com/kycapi/console-v2
+        type: Documentation
+  - aid: moodys-corporation:passfort-api
+    name: Moody's Passfort Lifecycle API
+    description: >-
+      Customer lifecycle and KYC orchestration platform enabling onboarding, perpetual KYC, customer due diligence, and
+      supplier risk workflows. Exposes a Custom Check Framework so integrators can plug additional data providers into
+      Passfort's policy engine.
+    tags:
+      - Customer Due Diligence
+      - KYC
+      - Onboarding
+      - Perpetual KYC
+      - Workflow
+    humanURL: https://www.passfort.com/
+    baseURL: https://api.passfort.com/
+    image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+    properties:
+      - url: https://github.com/moodysanalytics/MoodysAnalytics-PassFort-CustomCheckFramework
+        type: SDK
+  - aid: moodys-corporation:rms-irp-api
+    name: Moody's RMS Intelligent Risk Platform (IRP) API
+    description: >-
+      APIs for the RMS Intelligent Risk Platform covering catastrophe modeling, exposure management, and event response
+      across natural perils (hurricane, earthquake, flood, severe convective storm, wildfire), terrorism, cyber, and
+      life / health events for insurance and reinsurance use cases.
+    tags:
+      - Catastrophe Risk
+      - Cyber Risk
+      - Exposure Management
+      - Insurance
+      - Reinsurance
+      - Risk Modeling
+    humanURL: https://www.rms.com/products/risk-modeler
+    baseURL: https://api.rms.com/
+    image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+    properties:
+      - url: https://www.rms.com/products/risk-modeler
+        type: Documentation
+  - aid: moodys-corporation:esg-climate-api
+    name: Moody's ESG & Climate Solutions API
+    description: >-
+      ESG scores, controversies, climate physical and transition risk metrics sourced from Four Twenty Seven and Moody's
+      ESG Solutions. Used for portfolio screening, sustainable-finance reporting, climate scenario analysis, and
+      regulatory disclosure (TCFD / CSRD / SFDR).
+    tags:
+      - Climate Risk
+      - Controversies
+      - CSRD
+      - ESG Scores
+      - Physical Risk
+      - SFDR
+      - TCFD
+      - Transition Risk
+    humanURL: https://www.moodys.com/web/en/us/capabilities/esg-and-climate.html
+    baseURL: https://api.moodys.com/esg
+    image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+    properties:
+      - url: https://www.moodys.com/web/en/us/capabilities/esg-and-climate.html
+        type: Documentation
 maintainers:
-- FN: API Evangelist
-  email: info@apievangelist.com
-
+  - FN: API Evangelist
+    email: info@apievangelist.com
 x-common-properties:
   - type: Portal
     url: https://www.moodys.com/

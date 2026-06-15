@@ -1,66 +1,322 @@
-# Moody's Corporation
+# Moody's Corporation (moodys-corporation)
 
-Moody's Corporation (NYSE: MCO) is a global integrated risk-assessment firm operating through two segments — **Moody's Ratings** (Moody's Investors Service / MIS) for credit ratings and research, and **Moody's Analytics** for data, software, research, and APIs spanning economic data, credit risk, KYC, ESG, climate, and catastrophe modeling.
+Moody's Corporation (NYSE: MCO) is a global integrated risk-assessment firm operating through two segments: Moody's Ratings (Moody's Investors Service), which publishes credit ratings and assessment services on debt obligations, and Moody's Analytics, which provides data, software, research, and APIs spanning economic data, credit risk, KYC/AML, ESG, climate, and catastrophe modeling. Moody's Analytics products are exposed through multiple developer APIs and a portal at developer.moodys.com, with deeper API surfaces published at api.economy.com (Data Buffet, Scenario Studio, AutoCycle, ECCL) and through subsidiary brands including Bureau van Dijk (Orbis), RMS (catastrophe risk), Kompany / Passfort (KYC), and Four Twenty Seven (climate).
 
-This repository profiles Moody's Corporation as a public API provider for the [API Evangelist](https://apievangelist.com) network. The deeper Moody's Analytics API artifacts (Data Buffet, Scenario Studio, AutoCycle, ECCL, KYC) are also tracked separately at [api-evangelist/moodys](https://github.com/api-evangelist/moodys); this repo is the corporate-parent profile.
+**APIs.json:** [https://github.com/api-evangelist/moodys-corporation/blob/main/apis.yml](https://github.com/api-evangelist/moodys-corporation/blob/main/apis.yml)
+
+## Tags
+
+- Analytics
+- Catastrophe Risk
+- Climate Risk
+- Compliance
+- Credit Ratings
+- Economic Data
+- ESG
+- Financial Data
+- KYC
+- Risk
+
+## Timestamps
+
+- **Modified:** 2026-05-23
 
 ## APIs
 
-| Aid | API | Segment | Base URL |
-| --- | --- | --- | --- |
-| `moodys-ratings` | Moody's Ratings | Moody's Ratings (MIS) | https://ratings.moodys.com/ |
-| `developer-platform` | Moody's Analytics Developer Platform | Moody's Analytics | https://developer.moodys.com/ |
-| `data-buffet-api` | Data Buffet API | Moody's Analytics | https://api.economy.com/data/v1 |
-| `scenario-studio-api` | Scenario Studio API | Moody's Analytics | https://api.economy.com/scenario-studio/v2 |
-| `autocycle-api` | AutoCycle API | Moody's Analytics | https://api.economy.com/autocycle/v1 |
-| `eccl-api` | Expected Consumer Credit Loss API | Moody's Analytics | https://api.economy.com/eccl/v1 |
-| `impairmentstudio-api` | ImpairmentStudio API | Moody's Analytics | https://api.moodys.com/impairmentstudio |
-| `orbis-api` | Orbis (Bureau van Dijk) API | Moody's Analytics | https://orbis.bvdinfo.com/ |
-| `kyc-api` | KYC API (Kompany / Maxsight) | Moody's Analytics | https://api.kompany.com/ |
-| `passfort-api` | Passfort Lifecycle API | Moody's Analytics | https://api.passfort.com/ |
-| `rms-irp-api` | RMS Intelligent Risk Platform API | Moody's Analytics | https://api.rms.com/ |
-| `esg-climate-api` | ESG & Climate Solutions API | Moody's Analytics | https://api.moodys.com/esg |
+### Moody's Ratings (Moody's Investors Service)
 
-## Artifacts
+Moody's Ratings (formerly Moody's Investors Service / MIS) publishes credit ratings, research, and risk analysis on debt obligations issued by corporations, governments, and structured finance vehicles. Ratings, research, and the issuer/instrument reference data underpin the firm's research feeds and licensed data products consumed by institutional subscribers and downstream data redistributors.
 
-- `apis.yml` — APIs.json catalog of every Moody's Corporation API surface and its properties.
-- `openapi/` — `moodys-analytics-developer-openapi.yml` (umbrella platform) + `moodys-data-buffet-api-openapi.yml` (Data Buffet reference).
-- `capabilities/` — Naftiko capabilities for authentication, Data Buffet, ImpairmentStudio, Orbis lookup, KYC verification, and a cross-API credit onboarding workflow composition.
-- `json-schema/` — JSON Schemas for credit ratings, entities, time series, and RMS catastrophe events.
-- `json-structure/` — Structural definitions for the same entities.
-- `json-ld/` — JSON-LD context mapping Moody's terms onto schema.org and FIBO.
-- `examples/` — Representative request / response and entity examples.
-- `rules/` — Spectral ruleset enforcing Moody's API conventions (Title Case, OAuth2, https).
-- `vocabulary/` — Domain vocabulary covering segments, product lines, and key terms (CECL, LEI, UBO, TCFD, etc.).
-- `plans/` — Commercial plans summary (enterprise-quote model).
-- `rate-limits/` — Documented rate limits (Data Buffet 1 req/sec, 1 GB/month).
-- `finops/` — FinOps / FOCUS-aligned cost-attribution and optimization guidance.
+- **Human URL:** [https://ratings.moodys.com/](https://ratings.moodys.com/)
+- **Base URL:** `https://ratings.moodys.com/`
 
-## Authentication
+#### Tags
 
-Moody's Analytics product APIs predominantly use **OAuth2 client credentials** (`POST /oauth2/token`, 1-hour bearer tokens) with **HMAC request signing** as a fallback on legacy product APIs (Data Buffet, Scenario Studio). API credentials are provisioned through the customer's Moody's Analytics account.
+- Credit Ratings
+- Debt
+- Fixed Income
+- Issuer Reference Data
+- Research
+- Sovereign
+- Structured Finance
 
-## GitHub Organization
+#### Properties
 
-[github.com/moodysanalytics](https://github.com/moodysanalytics) hosts open-source code samples and tooling, including:
+- [Portal](https://ratings.moodys.com/)
+- [Terms of Service](https://www.moodys.com/web/en/us/about/legal/terms-of-use.html)
+- [Postman Collection](collections/moodys-analytics-developer.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
+- [Open Collection](collections/moodys-analytics-developer.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
+- [Postman Collection](collections/moodys-data-buffet-api.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
+- [Open Collection](collections/moodys-data-buffet-api.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
 
-- `databuffet-api-codesamples` — C# / Java / Python / R code samples for the Data Buffet API.
-- `scenario-studio-api-codesamples` — Python / R client libraries and Postman collection for Scenario Studio.
-- `apic` — Python CLI for Moody's Analytics APIs (currently supports ImpairmentStudio).
-- `MoodysAnalytics-PassFort-CustomCheckFramework` — TypeScript starter for custom Passfort data-provider integrations.
+### Moody's Analytics Developer Platform
 
-## Notable Absences
+Umbrella developer platform spanning Moody's Analytics APIs across economic data, credit risk, KYC, ESG, climate, and risk modeling. Hosts API catalogs, OpenAPI specifications, authentication (OAuth2 client credentials and HMAC), sandbox keys, and code samples for downstream Moody's API products including Data Buffet, Scenario Studio, AutoCycle, ECCL, ImpairmentStudio, RMS Intelligent Risk Platform, Orbis, and Passfort.
 
-- No public self-service developer tier or free sandbox key listed publicly.
-- No published per-call USD pricing on the developer portal.
-- No single OpenAPI catalog page enumerating every Moody's Analytics product API surface.
-- No public status page or platform RSS feed surfaced from corporate URLs.
+- **Human URL:** [https://developer.moodys.com/](https://developer.moodys.com/)
+- **Base URL:** `https://developer.moodys.com/`
 
-## Related
+#### Tags
 
-- API Evangelist sibling profile: [api-evangelist/moodys](https://github.com/api-evangelist/moodys) — deeper artifact set for the Moody's Analytics APIs.
-- Investor relations: https://ir.moodys.com/
+- API Catalog
+- Developer Portal
+- OAuth2
+- SDKs
 
-## License
+#### Properties
 
-The artifacts in this repository are released under the [API Commons](http://apicommons.org) terms. Underlying API access is governed by Moody's Analytics terms of use: https://www.moodys.com/web/en/us/about/legal/terms-of-use.html
+- [Portal](https://developer.moodys.com/)
+- [Hub](https://hub.moodysanalytics.com/)
+- [GitHub Organization](https://github.com/moodysanalytics)
+- [OpenAPI](openapi/moodys-analytics-developer-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
+- [Postman Collection](collections/moodys-analytics-developer.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
+- [Open Collection](collections/moodys-analytics-developer.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
+
+### Moody's Analytics Data Buffet API
+
+Programmatic access to international and subnational economic, demographic, and financial time-series data and forecasts. Supports retrieval of single or multi-series, basket creation, asynchronous bulk orders, and search against the Data Buffet repository. Authentication is OAuth2 client credentials with HMAC signing; rate-limited at one request per second and a 1 GB monthly data cap per key.
+
+- **Human URL:** [https://www.economy.com/products/tools/data-buffet](https://www.economy.com/products/tools/data-buffet)
+- **Base URL:** `https://api.economy.com/data/v1`
+
+#### Tags
+
+- Demographics
+- Economic Data
+- Forecasts
+- Time Series
+
+#### Properties
+
+- [Documentation](https://api.economy.com/data/v1/swagger)
+- [GitHub Organization](https://github.com/moodysanalytics/databuffet-api-codesamples)
+- [OpenAPI](openapi/moodys-data-buffet-api-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
+- [Postman Collection](collections/moodys-data-buffet-api.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
+- [Open Collection](collections/moodys-data-buffet-api.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
+
+### Moody's Analytics Scenario Studio API
+
+Programmatic access to the Scenario Studio macroeconomic scenario platform, enabling automatic retrieval of custom scenarios generated against the Moody's Analytics Global Macroeconomic Model. Supports OAuth and HMAC authentication and returns JSON responses; a Postman collection and Python / R client libraries ship with the published code samples.
+
+- **Human URL:** [https://hub.moodysanalytics.com/products](https://hub.moodysanalytics.com/products)
+- **Base URL:** `https://api.economy.com/scenario-studio/v2`
+
+#### Tags
+
+- Economic Models
+- Forecasting
+- Macroeconomic
+- Scenarios
+
+#### Properties
+
+- [Documentation](https://api.economy.com/scenario-studio/v2/swagger)
+- [GitHub Organization](https://github.com/moodysanalytics/scenario-studio-api-codesamples)
+- [Postman Collection](collections/moodys-analytics-developer.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
+- [Open Collection](collections/moodys-analytics-developer.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
+- [Postman Collection](collections/moodys-data-buffet-api.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
+- [Open Collection](collections/moodys-data-buffet-api.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
+
+### Moody's AutoCycle API
+
+Retrieves forecasts of vehicle prices from AutoCycle models, integrating Moody's Analytics economic data and scenarios for automotive residual value forecasting.
+
+- **Human URL:** [https://hub.moodysanalytics.com/products](https://hub.moodysanalytics.com/products)
+- **Base URL:** `https://api.economy.com/autocycle/v1`
+
+#### Tags
+
+- Automotive
+- Forecasts
+- Residual Value
+- Vehicle Pricing
+
+#### Properties
+
+- [Documentation](https://api.economy.com/autocycle/v1/swagger)
+- [Postman Collection](collections/moodys-analytics-developer.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
+- [Open Collection](collections/moodys-analytics-developer.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
+- [Postman Collection](collections/moodys-data-buffet-api.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
+- [Open Collection](collections/moodys-data-buffet-api.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
+
+### Moody's Expected Consumer Credit Loss (ECCL) API
+
+Retrieves expected consumer credit loss forecasts under baseline and stress scenarios. Combines customer data, economic data from Moody's Analytics, and consumer credit data for credit risk modeling and CCAR / CECL workflows.
+
+- **Human URL:** [https://hub.moodysanalytics.com/products](https://hub.moodysanalytics.com/products)
+- **Base URL:** `https://api.economy.com/eccl/v1`
+
+#### Tags
+
+- CECL
+- Consumer Credit
+- Credit Loss
+- Forecasts
+- Risk
+
+#### Properties
+
+- [Documentation](https://api.economy.com/eccl/v1/swagger)
+- [Postman Collection](collections/moodys-analytics-developer.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
+- [Open Collection](collections/moodys-analytics-developer.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
+- [Postman Collection](collections/moodys-data-buffet-api.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
+- [Open Collection](collections/moodys-data-buffet-api.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
+
+### Moody's ImpairmentStudio API
+
+Programmatic interface to ImpairmentStudio for CECL impairment estimation. Supports importing input datasets, triggering analyses, polling job status, and downloading analysis outputs via the apic Python CLI or direct API calls.
+
+- **Human URL:** [https://www.moodys.com/web/en/us/products/impairmentstudio.html](https://www.moodys.com/web/en/us/products/impairmentstudio.html)
+- **Base URL:** `https://api.moodys.com/impairmentstudio`
+
+#### Tags
+
+- CECL
+- Credit Loss
+- Impairment
+- Reserve Modeling
+
+#### Properties
+
+- [C L I](https://github.com/moodysanalytics/apic)
+- [Postman Collection](collections/moodys-analytics-developer.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
+- [Open Collection](collections/moodys-analytics-developer.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
+- [Postman Collection](collections/moodys-data-buffet-api.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
+- [Open Collection](collections/moodys-data-buffet-api.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
+
+### Moody's Orbis (Bureau van Dijk) API
+
+Access to Orbis, the Bureau van Dijk company information database covering hundreds of millions of public and private companies worldwide with ownership, financials, officers, beneficial owners, ESG, and corporate family-tree data. The Orbis API and bulk data integrations feed KYC, compliance, third-party risk, and credit workflows.
+
+- **Human URL:** [https://www.bvdinfo.com/en-gb/our-products/data/international/orbis](https://www.bvdinfo.com/en-gb/our-products/data/international/orbis)
+- **Base URL:** `https://orbis.bvdinfo.com/`
+
+#### Tags
+
+- Beneficial Ownership
+- Company Data
+- Corporate Family Tree
+- Financials
+- KYC
+- Reference Data
+
+#### Properties
+
+- [Documentation](https://www.bvdinfo.com/en-gb/our-products/data/integration/apis-and-feeds)
+- [Postman Collection](collections/moodys-analytics-developer.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
+- [Open Collection](collections/moodys-analytics-developer.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
+- [Postman Collection](collections/moodys-data-buffet-api.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
+- [Open Collection](collections/moodys-data-buffet-api.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
+
+### Moody's KYC API (Kompany / Maxsight Entity Verification)
+
+Verifies businesses against authoritative primary-source government registers in real time, returning legal entity records, ultimate beneficial owners, registered documents, and AML / sanctions screening signals. Powers the Maxsight Entity Verification API and Kompany Live Search.
+
+- **Human URL:** [https://www.kompany.com/kycapi/discover](https://www.kompany.com/kycapi/discover)
+- **Base URL:** `https://api.kompany.com/`
+
+#### Tags
+
+- Anti-Money Laundering
+- Compliance
+- Entity Verification
+- KYC
+- Risk
+- Sanctions Screening
+
+#### Properties
+
+- [Documentation](https://www.kompany.com/kycapi/console-v2)
+- [Postman Collection](collections/moodys-analytics-developer.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
+- [Open Collection](collections/moodys-analytics-developer.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
+- [Postman Collection](collections/moodys-data-buffet-api.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
+- [Open Collection](collections/moodys-data-buffet-api.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
+
+### Moody's Passfort Lifecycle API
+
+Customer lifecycle and KYC orchestration platform enabling onboarding, perpetual KYC, customer due diligence, and supplier risk workflows. Exposes a Custom Check Framework so integrators can plug additional data providers into Passfort's policy engine.
+
+- **Human URL:** [https://www.passfort.com/](https://www.passfort.com/)
+- **Base URL:** `https://api.passfort.com/`
+
+#### Tags
+
+- Customer Due Diligence
+- KYC
+- Onboarding
+- Perpetual KYC
+- Workflow
+
+#### Properties
+
+- [SDK](https://github.com/moodysanalytics/MoodysAnalytics-PassFort-CustomCheckFramework)
+- [Postman Collection](collections/moodys-analytics-developer.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
+- [Open Collection](collections/moodys-analytics-developer.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
+- [Postman Collection](collections/moodys-data-buffet-api.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
+- [Open Collection](collections/moodys-data-buffet-api.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
+
+### Moody's RMS Intelligent Risk Platform (IRP) API
+
+APIs for the RMS Intelligent Risk Platform covering catastrophe modeling, exposure management, and event response across natural perils (hurricane, earthquake, flood, severe convective storm, wildfire), terrorism, cyber, and life / health events for insurance and reinsurance use cases.
+
+- **Human URL:** [https://www.rms.com/products/risk-modeler](https://www.rms.com/products/risk-modeler)
+- **Base URL:** `https://api.rms.com/`
+
+#### Tags
+
+- Catastrophe Risk
+- Cyber Risk
+- Exposure Management
+- Insurance
+- Reinsurance
+- Risk Modeling
+
+#### Properties
+
+- [Documentation](https://www.rms.com/products/risk-modeler)
+- [Postman Collection](collections/moodys-analytics-developer.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
+- [Open Collection](collections/moodys-analytics-developer.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
+- [Postman Collection](collections/moodys-data-buffet-api.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
+- [Open Collection](collections/moodys-data-buffet-api.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
+
+### Moody's ESG & Climate Solutions API
+
+ESG scores, controversies, climate physical and transition risk metrics sourced from Four Twenty Seven and Moody's ESG Solutions. Used for portfolio screening, sustainable-finance reporting, climate scenario analysis, and regulatory disclosure (TCFD / CSRD / SFDR).
+
+- **Human URL:** [https://www.moodys.com/web/en/us/capabilities/esg-and-climate.html](https://www.moodys.com/web/en/us/capabilities/esg-and-climate.html)
+- **Base URL:** `https://api.moodys.com/esg`
+
+#### Tags
+
+- Climate Risk
+- Controversies
+- CSRD
+- ESG Scores
+- Physical Risk
+- SFDR
+- TCFD
+- Transition Risk
+
+#### Properties
+
+- [Documentation](https://www.moodys.com/web/en/us/capabilities/esg-and-climate.html)
+- [Postman Collection](collections/moodys-analytics-developer.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
+- [Open Collection](collections/moodys-analytics-developer.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
+- [Postman Collection](collections/moodys-data-buffet-api.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
+- [Open Collection](collections/moodys-data-buffet-api.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
+
+## Common Properties
+
+- [Portal](https://www.moodys.com/)
+- [Blog](https://www.moodys.com/web/en/us/insights.html)
+- [Terms of Service](https://www.moodys.com/web/en/us/about/legal/terms-of-use.html)
+- [Privacy Policy](https://www.moodys.com/web/en/us/about/legal/privacy-policy.html)
+- [GitHub Organization](https://github.com/moodysanalytics)
+- [Investor Relations](https://ir.moodys.com/)
+- [Contact](https://www.moodys.com/web/en/us/about/contact.html)
+- [Insights](https://www.moodys.com/web/en/us/insights/all.html)
+
+## Maintainers
+
+**FN:** API Evangelist
+**Email:** info@apievangelist.com

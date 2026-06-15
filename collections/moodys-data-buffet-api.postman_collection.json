@@ -1,0 +1,3505 @@
+{
+  "item": [
+    {
+      "id": "afb446f5-276b-4dca-adfe-85a813b3c76b",
+      "name": "Baskets",
+      "description": {
+        "content": "Operations for creating and managing collections of series requests",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "7f465f18-1011-443f-8d67-aef865927403",
+          "name": "Moody's List All Baskets",
+          "request": {
+            "name": "Moody's List All Baskets",
+            "description": {
+              "content": "Returns a list of all data baskets owned by the authenticated user. A basket is a saved collection of series requests that can be executed as an order.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "baskets"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "42e7fecc-8743-405f-8df7-836c51676ee6",
+              "name": "Successfully retrieved basket list",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "baskets"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"basketId\": \"500123\",\n    \"name\": \"Example Title\",\n    \"series\": [],\n    \"description\": \"A sample description.\",\n    \"createdAt\": \"2026-01-15T10:30:00Z\",\n    \"updatedAt\": \"2026-01-15T10:30:00Z\"\n  },\n  {\n    \"basketId\": \"500123\",\n    \"name\": \"Example Title\",\n    \"series\": [],\n    \"description\": \"A sample description.\",\n    \"createdAt\": \"2026-01-15T10:30:00Z\",\n    \"updatedAt\": \"2026-01-15T10:30:00Z\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "d2ed25ee-18e4-4ee0-9c40-ff47f3adc103",
+              "name": "Unauthorized - invalid or expired token",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "baskets"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "2ff6280c-7070-409a-983c-9f719bdda4bb",
+          "name": "Moody's Create a New Basket",
+          "request": {
+            "name": "Moody's Create a New Basket",
+            "description": {
+              "content": "Creates a new data basket with a collection of series requests. Baskets can be saved and reused to generate orders for bulk data retrieval.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "baskets"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"<string>\",\n  \"series\": [\n    {\n      \"mnemonic\": \"<string>\",\n      \"freq\": \"<string>\",\n      \"trans\": \"<string>\",\n      \"startDate\": \"<date>\",\n      \"endDate\": \"<date>\",\n      \"vintage\": \"<date>\"\n    },\n    {\n      \"mnemonic\": \"<string>\",\n      \"freq\": \"<string>\",\n      \"trans\": \"<string>\",\n      \"startDate\": \"<date>\",\n      \"endDate\": \"<date>\",\n      \"vintage\": \"<date>\"\n    }\n  ],\n  \"description\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "50746608-f5cc-4fd0-93ad-01102a269449",
+              "name": "Successfully created basket",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "baskets"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"Example Title\",\n  \"series\": [],\n  \"description\": \"A sample description.\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"basketId\": \"500123\",\n  \"name\": \"Example Title\",\n  \"series\": [],\n  \"description\": \"A sample description.\",\n  \"createdAt\": \"2026-01-15T10:30:00Z\",\n  \"updatedAt\": \"2026-01-15T10:30:00Z\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "a836d1e3-af9f-46e5-910a-98b0d33c3cc6",
+              "name": "Invalid basket definition",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "baskets"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"Example Title\",\n  \"series\": [],\n  \"description\": \"A sample description.\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": \"example_value\",\n  \"message\": \"example_value\",\n  \"details\": \"example_value\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "1347e0de-25f5-41a5-ba38-60d230f308f3",
+              "name": "Unauthorized - invalid or expired token",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "baskets"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"Example Title\",\n  \"series\": [],\n  \"description\": \"A sample description.\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "fc3eaa9b-885c-4fa9-aa81-46a939ed3e64",
+          "name": "Moody's Retrieve a Specific Basket",
+          "request": {
+            "name": "Moody's Retrieve a Specific Basket",
+            "description": {
+              "content": "Returns the details of a specific basket including its series requests and configuration.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "baskets",
+                ":basketId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "basketId",
+                  "description": "(Required) The unique identifier of the basket."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "c55f42e9-d918-4f08-b4ff-85cadb3085af",
+              "name": "Successfully retrieved basket",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "baskets",
+                    ":basketId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "basketId",
+                      "description": "(Required) The unique identifier of the basket."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"basketId\": \"500123\",\n  \"name\": \"Example Title\",\n  \"series\": [],\n  \"description\": \"A sample description.\",\n  \"createdAt\": \"2026-01-15T10:30:00Z\",\n  \"updatedAt\": \"2026-01-15T10:30:00Z\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "48c6ac2b-259c-470b-9b17-945c9265d230",
+              "name": "Unauthorized - invalid or expired token",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "baskets",
+                    ":basketId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "basketId",
+                      "description": "(Required) The unique identifier of the basket."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "62d5d46b-7b2c-450d-8f0c-4f80df65b592",
+              "name": "Basket not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "baskets",
+                    ":basketId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "basketId",
+                      "description": "(Required) The unique identifier of the basket."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "ac30d558-0de0-4d7d-b3b4-da363540a80c",
+          "name": "Moody's Update an Existing Basket",
+          "request": {
+            "name": "Moody's Update an Existing Basket",
+            "description": {
+              "content": "Updates the series requests and configuration of an existing basket.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "baskets",
+                ":basketId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "basketId",
+                  "description": "(Required) The unique identifier of the basket."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"<string>\",\n  \"series\": [\n    {\n      \"mnemonic\": \"<string>\",\n      \"freq\": \"<string>\",\n      \"trans\": \"<string>\",\n      \"startDate\": \"<date>\",\n      \"endDate\": \"<date>\",\n      \"vintage\": \"<date>\"\n    },\n    {\n      \"mnemonic\": \"<string>\",\n      \"freq\": \"<string>\",\n      \"trans\": \"<string>\",\n      \"startDate\": \"<date>\",\n      \"endDate\": \"<date>\",\n      \"vintage\": \"<date>\"\n    }\n  ],\n  \"description\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "f304223b-b255-4057-b55f-4b264c8d9fcb",
+              "name": "Successfully updated basket",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "baskets",
+                    ":basketId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "basketId",
+                      "description": "(Required) The unique identifier of the basket."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"Example Title\",\n  \"series\": [],\n  \"description\": \"A sample description.\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"basketId\": \"500123\",\n  \"name\": \"Example Title\",\n  \"series\": [],\n  \"description\": \"A sample description.\",\n  \"createdAt\": \"2026-01-15T10:30:00Z\",\n  \"updatedAt\": \"2026-01-15T10:30:00Z\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "117045e9-eec5-4192-b29e-6759c2eb701b",
+              "name": "Invalid basket definition",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "baskets",
+                    ":basketId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "basketId",
+                      "description": "(Required) The unique identifier of the basket."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"Example Title\",\n  \"series\": [],\n  \"description\": \"A sample description.\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": \"example_value\",\n  \"message\": \"example_value\",\n  \"details\": \"example_value\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "6f6765c7-86d8-44f0-9986-4620b6bbe108",
+              "name": "Unauthorized - invalid or expired token",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "baskets",
+                    ":basketId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "basketId",
+                      "description": "(Required) The unique identifier of the basket."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"Example Title\",\n  \"series\": [],\n  \"description\": \"A sample description.\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "719d075a-16a4-4ae5-850f-fcdb102a26a7",
+              "name": "Basket not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "baskets",
+                    ":basketId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "basketId",
+                      "description": "(Required) The unique identifier of the basket."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"Example Title\",\n  \"series\": [],\n  \"description\": \"A sample description.\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "881fe650-3eb7-47ae-ac93-9d799fa606e9",
+          "name": "Moody's Delete a Basket",
+          "request": {
+            "name": "Moody's Delete a Basket",
+            "description": {
+              "content": "Permanently deletes a basket and its associated series requests.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "baskets",
+                ":basketId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "basketId",
+                  "description": "(Required) The unique identifier of the basket."
+                }
+              ]
+            },
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "61b9e64e-22ae-405d-a302-699c321c804f",
+              "name": "Successfully deleted basket",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "baskets",
+                    ":basketId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "basketId",
+                      "description": "(Required) The unique identifier of the basket."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "236f9d5a-db79-49ed-8fdb-3f9238491b63",
+              "name": "Unauthorized - invalid or expired token",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "baskets",
+                    ":basketId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "basketId",
+                      "description": "(Required) The unique identifier of the basket."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "ca4419f7-8adf-460b-b937-f154170adcf8",
+              "name": "Basket not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "baskets",
+                    ":basketId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "basketId",
+                      "description": "(Required) The unique identifier of the basket."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "dd39bd80-7495-4795-994d-4efeb625508f",
+      "name": "Health",
+      "description": {
+        "content": "Service health monitoring",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "7177aee5-810a-4d6f-9f01-937c66b9e270",
+          "name": "Moody's Check Service Health",
+          "request": {
+            "name": "Moody's Check Service Health",
+            "description": {
+              "content": "Returns the current health status of the Data Buffet API service.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "health"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "94738374-b722-4462-a3b8-7adec1ed3eba",
+              "name": "Service is healthy",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "health"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": \"Healthy\",\n  \"timestamp\": \"2026-01-15T10:30:00Z\",\n  \"version\": \"example_value\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "25906fdf-0dda-401d-b476-677c46c692c0",
+              "name": "Service is unavailable",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "health"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Service Unavailable",
+              "code": 503,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "ff76ad00-ff53-4722-add2-d78820f54976",
+      "name": "Orders",
+      "description": {
+        "content": "Operations for managing data generation orders from baskets",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "408f45a1-330f-4586-a0db-c69e96c61891",
+          "name": "Moody's List All Orders",
+          "request": {
+            "name": "Moody's List All Orders",
+            "description": {
+              "content": "Returns a list of all data generation orders for the authenticated user. Orders are created from baskets and produce output files in the requested format.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "orders"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "894e2705-49bf-4f7d-a5d3-0be7442e2d17",
+              "name": "Successfully retrieved order list",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "orders"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"orderId\": \"500123\",\n    \"basketId\": \"500123\",\n    \"status\": \"Pending\",\n    \"fileType\": \"example_value\",\n    \"createdAt\": \"2026-01-15T10:30:00Z\",\n    \"completedAt\": \"2026-01-15T10:30:00Z\",\n    \"downloadUrl\": \"https://www.example.com\",\n    \"errorMessage\": \"example_value\"\n  },\n  {\n    \"orderId\": \"500123\",\n    \"basketId\": \"500123\",\n    \"status\": \"Pending\",\n    \"fileType\": \"example_value\",\n    \"createdAt\": \"2026-01-15T10:30:00Z\",\n    \"completedAt\": \"2026-01-15T10:30:00Z\",\n    \"downloadUrl\": \"https://www.example.com\",\n    \"errorMessage\": \"example_value\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "3554f933-c09e-47fd-a6d9-d271a90ab4e7",
+              "name": "Unauthorized - invalid or expired token",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "orders"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "a50063c0-de43-425c-93d0-70f4864bfdd2",
+          "name": "Moody's Create a New Order",
+          "request": {
+            "name": "Moody's Create a New Order",
+            "description": {
+              "content": "Creates a new data generation order from a basket. The order will be processed asynchronously and produce output in the specified file format.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "orders"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"basketId\": \"<string>\",\n  \"fileType\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "c9780fd6-0a88-47be-aa4d-fbf75f02fa89",
+              "name": "Successfully created order",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "orders"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"basketId\": \"500123\",\n  \"fileType\": \"example_value\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"orderId\": \"500123\",\n  \"basketId\": \"500123\",\n  \"status\": \"Pending\",\n  \"fileType\": \"example_value\",\n  \"createdAt\": \"2026-01-15T10:30:00Z\",\n  \"completedAt\": \"2026-01-15T10:30:00Z\",\n  \"downloadUrl\": \"https://www.example.com\",\n  \"errorMessage\": \"example_value\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "2c3ccc9b-521e-4544-bccc-e937ab96d531",
+              "name": "Invalid order request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "orders"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"basketId\": \"500123\",\n  \"fileType\": \"example_value\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": \"example_value\",\n  \"message\": \"example_value\",\n  \"details\": \"example_value\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "85bca2c1-6dd8-4536-8cf1-70beb3df516c",
+              "name": "Unauthorized - invalid or expired token",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "orders"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"basketId\": \"500123\",\n  \"fileType\": \"example_value\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "7e85832c-3859-4dd3-b486-0d1bd8b26c3e",
+          "name": "Moody's Retrieve a Specific Order",
+          "request": {
+            "name": "Moody's Retrieve a Specific Order",
+            "description": {
+              "content": "Returns the status and details of a specific order, including processing status and download URL when complete.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "orders",
+                ":orderId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "orderId",
+                  "description": "(Required) The unique identifier of the order."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "006b2ce9-6a0d-4c4c-bebd-4ece344cd602",
+              "name": "Successfully retrieved order",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "orders",
+                    ":orderId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "orderId",
+                      "description": "(Required) The unique identifier of the order."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"orderId\": \"500123\",\n  \"basketId\": \"500123\",\n  \"status\": \"Pending\",\n  \"fileType\": \"example_value\",\n  \"createdAt\": \"2026-01-15T10:30:00Z\",\n  \"completedAt\": \"2026-01-15T10:30:00Z\",\n  \"downloadUrl\": \"https://www.example.com\",\n  \"errorMessage\": \"example_value\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "e83e7fb4-b576-494b-949e-40559ca825c6",
+              "name": "Unauthorized - invalid or expired token",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "orders",
+                    ":orderId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "orderId",
+                      "description": "(Required) The unique identifier of the order."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "a8c9dbbf-00fb-483d-b03c-f9cc71c0cca7",
+              "name": "Order not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "orders",
+                    ":orderId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "orderId",
+                      "description": "(Required) The unique identifier of the order."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "865f8d32-86c6-40f1-acd2-f0dd1a4b1d99",
+          "name": "Moody's Download Order Output",
+          "request": {
+            "name": "Moody's Download Order Output",
+            "description": {
+              "content": "Downloads the output file for a completed order. The file format is determined by the fileType specified when creating the order.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "orders",
+                ":orderId",
+                "download"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "orderId",
+                  "description": "(Required) The unique identifier of the order."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/octet-stream"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "d542576c-92be-4590-916a-43c523e4e5b7",
+              "name": "Successfully downloaded order output",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "orders",
+                    ":orderId",
+                    "download"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "orderId",
+                      "description": "(Required) The unique identifier of the order."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/octet-stream"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/octet-stream"
+                }
+              ],
+              "body": "string",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "c9205a3c-01e8-4346-9fe7-d14e65d309f1",
+              "name": "Unauthorized - invalid or expired token",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "orders",
+                    ":orderId",
+                    "download"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "orderId",
+                      "description": "(Required) The unique identifier of the order."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "cc371b55-5afb-4884-975d-7731b5a60b5b",
+              "name": "Order not found or not yet complete",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "orders",
+                    ":orderId",
+                    "download"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "orderId",
+                      "description": "(Required) The unique identifier of the order."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "f4eadf82-2fb8-4c77-9357-aba6f4aec578",
+      "name": "Reference",
+      "description": {
+        "content": "Operations for retrieving frequency, vintage, and file type metadata",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "3197355c-9c9f-44e0-9549-355203260f54",
+          "name": "Moody's Obtain an Access Token",
+          "request": {
+            "name": "Moody's Obtain an Access Token",
+            "description": {
+              "content": "Authenticates using OAuth2 client credentials and returns a bearer access token for subsequent API requests.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "oauth2",
+                "token"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/x-www-form-urlencoded"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": [
+                {
+                  "disabled": false,
+                  "key": "grant_type",
+                  "value": "<string>",
+                  "description": "(Required) The OAuth2 grant type. Must be client_credentials."
+                },
+                {
+                  "disabled": false,
+                  "key": "client_id",
+                  "value": "<string>",
+                  "description": "(Required) The API client ID issued by Moody's Analytics."
+                },
+                {
+                  "disabled": false,
+                  "key": "client_secret",
+                  "value": "<string>",
+                  "description": "(Required) The API client secret issued by Moody's Analytics."
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "37dabead-ebc6-4c9e-8729-86fb012e150e",
+              "name": "Successfully obtained access token",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "oauth2",
+                    "token"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) The OAuth2 grant type. Must be client_credentials.",
+                        "type": "text/plain"
+                      },
+                      "key": "grant_type",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) The API client ID issued by Moody's Analytics.",
+                        "type": "text/plain"
+                      },
+                      "key": "client_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) The API client secret issued by Moody's Analytics.",
+                        "type": "text/plain"
+                      },
+                      "key": "client_secret",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"access_token\": \"example_value\",\n  \"token_type\": \"Bearer\",\n  \"expires_in\": 10\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "3de96467-ecc6-4db5-92e3-53f9a37e18ad",
+              "name": "Invalid grant type or missing credentials",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "oauth2",
+                    "token"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) The OAuth2 grant type. Must be client_credentials.",
+                        "type": "text/plain"
+                      },
+                      "key": "grant_type",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) The API client ID issued by Moody's Analytics.",
+                        "type": "text/plain"
+                      },
+                      "key": "client_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) The API client secret issued by Moody's Analytics.",
+                        "type": "text/plain"
+                      },
+                      "key": "client_secret",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "a2a09343-2016-44af-bde8-daf984783f78",
+              "name": "Invalid client credentials",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "oauth2",
+                    "token"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) The OAuth2 grant type. Must be client_credentials.",
+                        "type": "text/plain"
+                      },
+                      "key": "grant_type",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) The API client ID issued by Moody's Analytics.",
+                        "type": "text/plain"
+                      },
+                      "key": "client_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) The API client secret issued by Moody's Analytics.",
+                        "type": "text/plain"
+                      },
+                      "key": "client_secret",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "7d23072d-baa9-42d7-947f-aad3921c9668",
+          "name": "Moody's List Available Data Frequencies",
+          "request": {
+            "name": "Moody's List Available Data Frequencies",
+            "description": {
+              "content": "Returns a list of all supported data frequencies (e.g., annual, quarterly, monthly, weekly, daily) that can be used for frequency conversion when retrieving series.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "frequencies"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "6e643ad7-6c1b-4ee3-9125-492f374ed913",
+              "name": "Successfully retrieved frequency list",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "frequencies"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"code\": \"A\",\n    \"name\": \"Annual\",\n    \"description\": \"A sample description.\"\n  },\n  {\n    \"code\": \"A\",\n    \"name\": \"Annual\",\n    \"description\": \"A sample description.\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "2e8fcdd0-ed12-4d54-9cda-9857e1a71a86",
+              "name": "Unauthorized - invalid or expired token",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "frequencies"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "49633f07-9dd9-40ec-9b10-408f00f462f2",
+          "name": "Moody's List Available Vintages for a Series",
+          "request": {
+            "name": "Moody's List Available Vintages for a Series",
+            "description": {
+              "content": "Returns a list of available data vintages (historical revisions) for a specific series. Vintages enable access to previous versions of data as originally published.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "vintages"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "mnemonic",
+                  "value": "<string>",
+                  "description": "(Required) The unique series mnemonic identifier. Mnemonics follow the Data Buffet naming convention, e.g., FGDP_US for US GDP or EMPLPAY.IUSA for US total nonfarm payrolls."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "dc2225c7-27a8-44b9-8879-7e35f0d57687",
+              "name": "Successfully retrieved vintage list",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "vintages"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "mnemonic",
+                      "value": "FGDP_US"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"vintageDate\": \"2026-01-15\",\n    \"description\": \"A sample description.\"\n  },\n  {\n    \"vintageDate\": \"2026-01-15\",\n    \"description\": \"A sample description.\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "c332615c-122d-4102-9cd6-a6ed444816fc",
+              "name": "Invalid mnemonic",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "vintages"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "mnemonic",
+                      "value": "FGDP_US"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "cf011c81-b90f-443e-a7b6-6d8761604822",
+              "name": "Unauthorized - invalid or expired token",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "vintages"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "mnemonic",
+                      "value": "FGDP_US"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "26e77645-fc5f-4a88-962d-a5186861c4b1",
+              "name": "Series mnemonic not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "vintages"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "mnemonic",
+                      "value": "FGDP_US"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "987566eb-7258-42ee-b72c-7b30523780da",
+          "name": "Moody's List Supported Output File Types",
+          "request": {
+            "name": "Moody's List Supported Output File Types",
+            "description": {
+              "content": "Returns a list of supported output file types for order data generation (e.g., CSV, Excel, XML, JSON).",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "filetypes"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "f1994017-0552-46a3-8ed5-71aa18666e76",
+              "name": "Successfully retrieved file type list",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "filetypes"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"code\": \"example_value\",\n    \"name\": \"Example Title\",\n    \"extension\": \"example_value\",\n    \"description\": \"A sample description.\"\n  },\n  {\n    \"code\": \"example_value\",\n    \"name\": \"Example Title\",\n    \"extension\": \"example_value\",\n    \"description\": \"A sample description.\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "c8580cdd-c80c-4428-bb95-cfe7e1d67545",
+              "name": "Unauthorized - invalid or expired token",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "filetypes"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "d71a3653-f8f5-4ecb-b0e5-29102d0ce677",
+      "name": "Search",
+      "description": {
+        "content": "Operations for searching available datasets and series",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "061a30b3-8249-4baf-98b5-03cdf5b23c63",
+          "name": "Moody's Search for Available Series",
+          "request": {
+            "name": "Moody's Search for Available Series",
+            "description": {
+              "content": "Searches the Data Buffet repository for available series matching the specified criteria. Supports filtering by keyword, geography, source, and category.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "search"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "query",
+                  "value": "<string>",
+                  "description": "(Required) Search query string to match against series names, descriptions, mnemonics, and metadata."
+                },
+                {
+                  "disabled": false,
+                  "key": "geography",
+                  "value": "<string>",
+                  "description": "Filter results by geographic area code (e.g., US for United States, GB for United Kingdom, CN for China)."
+                },
+                {
+                  "disabled": false,
+                  "key": "source",
+                  "value": "<string>",
+                  "description": "Filter results by data source identifier (e.g., BLS, BEA, IMF, Eurostat)."
+                },
+                {
+                  "disabled": false,
+                  "key": "category",
+                  "value": "<string>",
+                  "description": "Filter results by data category (e.g., GDP, Employment, Inflation, Housing)."
+                },
+                {
+                  "disabled": false,
+                  "key": "offset",
+                  "value": "0",
+                  "description": "The number of results to skip for pagination."
+                },
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "25",
+                  "description": "The maximum number of results to return per page."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "0bb6bc4b-fe05-4bd8-9bbf-411c7ceb86be",
+              "name": "Successfully retrieved search results",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "search"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "query",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "geography",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "source",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "category",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "0"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "25"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"totalCount\": 10,\n  \"results\": [],\n  \"offset\": 10,\n  \"limit\": 10\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "8d181c18-32d9-44f2-816f-bfe0f3223db9",
+              "name": "Invalid search parameters",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "search"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "query",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "geography",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "source",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "category",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "0"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "25"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": \"example_value\",\n  \"message\": \"example_value\",\n  \"details\": \"example_value\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "d76f1cba-cc8a-4071-9391-e6c01f34fd26",
+              "name": "Unauthorized - invalid or expired token",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "search"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "query",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "geography",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "source",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "category",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "0"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "25"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "007c5e26-7c0a-4521-9862-b9f39185812b",
+      "name": "Series",
+      "description": {
+        "content": "Operations for retrieving individual and multi-series time series data",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "f6566174-6985-48bd-aa92-fd383c7254bf",
+          "name": "Moody's Retrieve a Single Time Series",
+          "request": {
+            "name": "Moody's Retrieve a Single Time Series",
+            "description": {
+              "content": "Returns data for a single economic, demographic, or financial time series identified by its mnemonic. Supports frequency conversion, mathematical transformations, date range filtering, and vintage selection.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "series"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "mnemonic",
+                  "value": "<string>",
+                  "description": "(Required) The unique series mnemonic identifier. Mnemonics follow the Data Buffet naming convention, e.g., FGDP_US for US GDP or EMPLPAY.IUSA for US total nonfarm payrolls."
+                },
+                {
+                  "disabled": false,
+                  "key": "freq",
+                  "value": "<string>",
+                  "description": "The desired output frequency for the series. When specified, frequency conversion is applied. For example, converting quarterly GDP to annual."
+                },
+                {
+                  "disabled": false,
+                  "key": "trans",
+                  "value": "<string>",
+                  "description": "The mathematical transformation to apply to the series values. Supports common economic transformations."
+                },
+                {
+                  "disabled": false,
+                  "key": "startDate",
+                  "value": "<date>",
+                  "description": "The start date for the data range in YYYY-MM-DD format. If omitted, returns data from the beginning of the series."
+                },
+                {
+                  "disabled": false,
+                  "key": "endDate",
+                  "value": "<date>",
+                  "description": "The end date for the data range in YYYY-MM-DD format. If omitted, returns data through the latest available observation or forecast."
+                },
+                {
+                  "disabled": false,
+                  "key": "vintage",
+                  "value": "<date>",
+                  "description": "The vintage date for accessing historical data revisions in YYYY-MM-DD format. If omitted, returns the latest vintage."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "b962b020-9ee1-4aa8-be86-2a5cb78a4fac",
+              "name": "Successfully retrieved time series data",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "series"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "mnemonic",
+                      "value": "FGDP_US"
+                    },
+                    {
+                      "key": "freq",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "trans",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "startDate",
+                      "value": "<date>"
+                    },
+                    {
+                      "key": "endDate",
+                      "value": "<date>"
+                    },
+                    {
+                      "key": "vintage",
+                      "value": "<date>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"mnemonic\": \"example_value\",\n  \"description\": \"A sample description.\",\n  \"frequency\": \"Annual\",\n  \"data\": [],\n  \"source\": \"example_value\",\n  \"geography\": \"example_value\",\n  \"units\": \"example_value\",\n  \"transformation\": \"example_value\",\n  \"startDate\": \"2026-01-15\",\n  \"endDate\": \"2026-01-15\",\n  \"vintage\": \"2026-01-15\",\n  \"lastUpdated\": \"2026-01-15T10:30:00Z\",\n  \"isForecast\": true\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "ccb07478-858b-43c1-b381-b72f1be408ae",
+              "name": "Invalid parameters",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "series"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "mnemonic",
+                      "value": "FGDP_US"
+                    },
+                    {
+                      "key": "freq",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "trans",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "startDate",
+                      "value": "<date>"
+                    },
+                    {
+                      "key": "endDate",
+                      "value": "<date>"
+                    },
+                    {
+                      "key": "vintage",
+                      "value": "<date>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": \"example_value\",\n  \"message\": \"example_value\",\n  \"details\": \"example_value\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "d1360679-bd04-40fd-99ef-3a39d4367528",
+              "name": "Unauthorized - invalid or expired token",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "series"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "mnemonic",
+                      "value": "FGDP_US"
+                    },
+                    {
+                      "key": "freq",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "trans",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "startDate",
+                      "value": "<date>"
+                    },
+                    {
+                      "key": "endDate",
+                      "value": "<date>"
+                    },
+                    {
+                      "key": "vintage",
+                      "value": "<date>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "45d065e0-77a3-4a77-b388-df79269e9e14",
+              "name": "Series mnemonic not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "series"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "mnemonic",
+                      "value": "FGDP_US"
+                    },
+                    {
+                      "key": "freq",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "trans",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "startDate",
+                      "value": "<date>"
+                    },
+                    {
+                      "key": "endDate",
+                      "value": "<date>"
+                    },
+                    {
+                      "key": "vintage",
+                      "value": "<date>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": \"example_value\",\n  \"message\": \"example_value\",\n  \"details\": \"example_value\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "2d27c1c6-ccbc-443e-8715-b78888163cc7",
+              "name": "Rate limit exceeded",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "series"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "mnemonic",
+                      "value": "FGDP_US"
+                    },
+                    {
+                      "key": "freq",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "trans",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "startDate",
+                      "value": "<date>"
+                    },
+                    {
+                      "key": "endDate",
+                      "value": "<date>"
+                    },
+                    {
+                      "key": "vintage",
+                      "value": "<date>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "efb27700-d6e4-4deb-a464-56bce88f618e",
+          "name": "Moody's Retrieve Multiple Time Series",
+          "request": {
+            "name": "Moody's Retrieve Multiple Time Series",
+            "description": {
+              "content": "Returns data for up to 25 time series in a single request. Each series can have individual frequency, transformation, date range, and vintage parameters. Useful for efficiently fetching related economic indicators together.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "multi-series"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"series\": [\n    {\n      \"mnemonic\": \"<string>\",\n      \"freq\": \"<string>\",\n      \"trans\": \"<string>\",\n      \"startDate\": \"<date>\",\n      \"endDate\": \"<date>\",\n      \"vintage\": \"<date>\"\n    },\n    {\n      \"mnemonic\": \"<string>\",\n      \"freq\": \"<string>\",\n      \"trans\": \"<string>\",\n      \"startDate\": \"<date>\",\n      \"endDate\": \"<date>\",\n      \"vintage\": \"<date>\"\n    }\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "b3524bb1-21c0-4a6e-8683-0a11e117cef6",
+              "name": "Successfully retrieved multiple time series",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "multi-series"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"series\": []\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"series\": []\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "ecd6a164-fb41-4c26-93f6-e8ab468d6271",
+              "name": "Invalid request or exceeded 25 series limit",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "multi-series"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"series\": []\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": \"example_value\",\n  \"message\": \"example_value\",\n  \"details\": \"example_value\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "af5efc45-baa5-4bbc-a50a-1e2903f531f7",
+              "name": "Unauthorized - invalid or expired token",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "multi-series"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"series\": []\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.economy.com/data/v1",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "oauth2",
+    "oauth2": [
+      {
+        "key": "accessTokenUrl",
+        "value": "https://api.economy.com/data/v1/oauth2/token"
+      },
+      {
+        "key": "grant_type",
+        "value": "client_credentials"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "cdf3f61a-bc91-4d60-91c4-a9088a68d483",
+    "name": "Moody's Data Buffet API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The Moody's Analytics Data Buffet API provides programmatic access to international and subnational economic, demographic, and financial time series data and forecasts. It enables retrieval of individual series or baskets of data, supports frequency conversion, mathematical transformations, date range filtering, and vintage/versioning selection. Code samples are available in C#, Java, Python, and R.\n\nContact Support:\n Name: Moody's Analytics",
+      "type": "text/plain"
+    }
+  }
+}

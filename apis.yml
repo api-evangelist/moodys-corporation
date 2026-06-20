@@ -8,7 +8,7 @@ description: >-
   portal at developer.moodys.com, with deeper API surfaces published at api.economy.com (Data Buffet, Scenario Studio,
   AutoCycle, ECCL) and through subsidiary brands including Bureau van Dijk (Orbis), RMS (catastrophe risk), Kompany /
   Passfort (KYC), and Four Twenty Seven (climate).
-image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
 url: https://github.com/api-evangelist/moodys-corporation/blob/main/apis.yml
 modified: '2026-05-23'
 specificationVersion: '0.16'
@@ -59,7 +59,7 @@ apis:
       - Structured Finance
     humanURL: https://ratings.moodys.com/
     baseURL: https://ratings.moodys.com/
-    image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+    image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
     properties:
       - url: https://ratings.moodys.com/
         type: Portal
@@ -79,7 +79,7 @@ apis:
       - SDKs
     humanURL: https://developer.moodys.com/
     baseURL: https://developer.moodys.com/
-    image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+    image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
     properties:
       - url: https://developer.moodys.com/
         type: Portal
@@ -103,7 +103,7 @@ apis:
       - Time Series
     humanURL: https://www.economy.com/products/tools/data-buffet
     baseURL: https://api.economy.com/data/v1
-    image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+    image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
     properties:
       - url: https://api.economy.com/data/v1/swagger
         type: Documentation
@@ -125,7 +125,7 @@ apis:
       - Scenarios
     humanURL: https://hub.moodysanalytics.com/products
     baseURL: https://api.economy.com/scenario-studio/v2
-    image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+    image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
     properties:
       - url: https://api.economy.com/scenario-studio/v2/swagger
         type: Documentation
@@ -143,7 +143,7 @@ apis:
       - Vehicle Pricing
     humanURL: https://hub.moodysanalytics.com/products
     baseURL: https://api.economy.com/autocycle/v1
-    image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+    image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
     properties:
       - url: https://api.economy.com/autocycle/v1/swagger
         type: Documentation
@@ -160,7 +160,7 @@ apis:
       - Risk
     humanURL: https://hub.moodysanalytics.com/products
     baseURL: https://api.economy.com/eccl/v1
-    image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+    image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
     properties:
       - url: https://api.economy.com/eccl/v1/swagger
         type: Documentation
@@ -177,7 +177,7 @@ apis:
       - Reserve Modeling
     humanURL: https://www.moodys.com/web/en/us/products/impairmentstudio.html
     baseURL: https://api.moodys.com/impairmentstudio
-    image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+    image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
     properties:
       - url: https://github.com/moodysanalytics/apic
         type: CLI
@@ -197,7 +197,7 @@ apis:
       - Reference Data
     humanURL: https://www.bvdinfo.com/en-gb/our-products/data/international/orbis
     baseURL: https://orbis.bvdinfo.com/
-    image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+    image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
     properties:
       - url: https://www.bvdinfo.com/en-gb/our-products/data/integration/apis-and-feeds
         type: Documentation
@@ -216,7 +216,7 @@ apis:
       - Sanctions Screening
     humanURL: https://www.kompany.com/kycapi/discover
     baseURL: https://api.kompany.com/
-    image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+    image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
     properties:
       - url: https://www.kompany.com/kycapi/console-v2
         type: Documentation
@@ -234,7 +234,7 @@ apis:
       - Workflow
     humanURL: https://www.passfort.com/
     baseURL: https://api.passfort.com/
-    image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+    image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
     properties:
       - url: https://github.com/moodysanalytics/MoodysAnalytics-PassFort-CustomCheckFramework
         type: SDK
@@ -253,7 +253,7 @@ apis:
       - Risk Modeling
     humanURL: https://www.rms.com/products/risk-modeler
     baseURL: https://api.rms.com/
-    image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+    image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
     properties:
       - url: https://www.rms.com/products/risk-modeler
         type: Documentation
@@ -274,7 +274,7 @@ apis:
       - Transition Risk
     humanURL: https://www.moodys.com/web/en/us/capabilities/esg-and-climate.html
     baseURL: https://api.moodys.com/esg
-    image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+    image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
     properties:
       - url: https://www.moodys.com/web/en/us/capabilities/esg-and-climate.html
         type: Documentation

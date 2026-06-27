@@ -237,7 +237,7 @@ apis:
     image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
     properties:
       - url: https://github.com/moodysanalytics/MoodysAnalytics-PassFort-CustomCheckFramework
-        type: SDK
+        type: SDKs
   - aid: moodys-corporation:rms-irp-api
     name: Moody's RMS Intelligent Risk Platform (IRP) API
     description: >-

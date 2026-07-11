@@ -25,6 +25,8 @@ tags:
   - Risk
   - Fortune 1000
 common:
+  - type: OAuthScopes
+    url: scopes/moodys-corporation-scopes.yml
   - url: https://www.moodys.com/
     type: Portal
   - url: https://www.moodys.com/web/en/us/insights.html

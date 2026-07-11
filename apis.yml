@@ -25,6 +25,10 @@ tags:
   - Risk
   - Fortune 1000
 common:
+  - type: DomainSecurity
+    url: security/moodys-corporation-domain-security.yml
+  - type: Authentication
+    url: authentication/moodys-corporation-authentication.yml
   - type: OAuthScopes
     url: scopes/moodys-corporation-scopes.yml
   - url: https://www.moodys.com/

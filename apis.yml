@@ -25,6 +25,8 @@ tags:
   - Risk
   - Fortune 1000
 common:
+  - type: AgenticAccess
+    url: agentic-access/moodys-corporation-agentic-access.yml
   - type: DomainSecurity
     url: security/moodys-corporation-domain-security.yml
   - type: Authentication

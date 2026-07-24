@@ -1,0 +1,105 @@
+openapi: 3.1.0
+info:
+  title: Moody's Analytics Developer Platform Authentication Catalog API
+  version: 1.0.0
+  description: Cross-cutting umbrella API surface for the Moody's Analytics developer platform covering authentication (OAuth2 client credentials and HMAC request signing), platform health, product catalog discovery, and a canonical pattern for asynchronous analysis-job execution used across multiple Moody's Analytics product APIs (Data Buffet, Scenario Studio, ImpairmentStudio, AutoCycle, ECCL).
+  contact:
+    name: Moody's Analytics Developer Support
+    email: helpeconomy@moodys.com
+    url: https://developer.moodys.com/
+  license:
+    name: Moody's Analytics Terms of Use
+    url: https://www.moodys.com/web/en/us/about/legal/terms-of-use.html
+servers:
+- url: https://api.economy.com
+  description: Moody's Analytics economy.com API gateway
+- url: https://api.moodys.com
+  description: Moody's Analytics moodys.com API gateway
+security:
+- oauth2: []
+tags:
+- name: Catalog
+  description: Discovery of available products, datasets, and entitlements
+paths:
+  /catalog/products:
+    get:
+      operationId: listProducts
+      summary: Moody's List Catalog Products
+      description: Lists Moody's Analytics product APIs the caller is entitled to, including base URL, version, and documentation URL per product.
+      tags:
+      - Catalog
+      responses:
+        '200':
+          description: Product catalog returned
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Product'
+  /catalog/products/{productId}:
+    get:
+      operationId: getProduct
+      summary: Moody's Get Catalog Product
+      description: Returns metadata for a single product in the catalog.
+      tags:
+      - Catalog
+      parameters:
+      - $ref: '#/components/parameters/productId'
+      responses:
+        '200':
+          description: Product returned
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Product'
+        '404':
+          description: Product not found
+components:
+  parameters:
+    productId:
+      name: productId
+      in: path
+      required: true
+      description: The identifier of a Moody's Analytics product in the catalog.
+      schema:
+        type: string
+  schemas:
+    Product:
+      type: object
+      properties:
+        productId:
+          type: string
+        name:
+          type: string
+        description:
+          type: string
+        baseUrl:
+          type: string
+          format: uri
+        version:
+          type: string
+        documentationUrl:
+          type: string
+          format: uri
+        tags:
+          type: array
+          items:
+            type: string
+  securitySchemes:
+    oauth2:
+      type: oauth2
+      flows:
+        clientCredentials:
+          tokenUrl: https://api.economy.com/oauth2/token
+          scopes:
+            read: Read access to entitled Moody's Analytics products
+            write: Write access for job submission and basket / order management
+    hmac:
+      type: apiKey
+      in: header
+      name: Authorization
+      description: HMAC-SHA256 request signing scheme used as an alternative to OAuth2 on legacy Moody's Analytics product APIs (Data Buffet, Scenario Studio).
+externalDocs:
+  description: Moody's Analytics Developer Portal
+  url: https://developer.moodys.com/

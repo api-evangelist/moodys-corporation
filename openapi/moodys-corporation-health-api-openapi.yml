@@ -1,0 +1,71 @@
+openapi: 3.1.0
+info:
+  title: Moody's Analytics Developer Platform Authentication Health API
+  version: 1.0.0
+  description: Cross-cutting umbrella API surface for the Moody's Analytics developer platform covering authentication (OAuth2 client credentials and HMAC request signing), platform health, product catalog discovery, and a canonical pattern for asynchronous analysis-job execution used across multiple Moody's Analytics product APIs (Data Buffet, Scenario Studio, ImpairmentStudio, AutoCycle, ECCL).
+  contact:
+    name: Moody's Analytics Developer Support
+    email: helpeconomy@moodys.com
+    url: https://developer.moodys.com/
+  license:
+    name: Moody's Analytics Terms of Use
+    url: https://www.moodys.com/web/en/us/about/legal/terms-of-use.html
+servers:
+- url: https://api.economy.com
+  description: Moody's Analytics economy.com API gateway
+- url: https://api.moodys.com
+  description: Moody's Analytics moodys.com API gateway
+security:
+- oauth2: []
+tags:
+- name: Health
+  description: Platform availability and version metadata
+paths:
+  /health:
+    get:
+      operationId: getHealth
+      summary: Moody's Get Platform Health
+      description: Returns the health status of the developer platform gateway.
+      tags:
+      - Health
+      security: []
+      responses:
+        '200':
+          description: Healthy
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Health'
+components:
+  schemas:
+    Health:
+      type: object
+      properties:
+        status:
+          type: string
+          enum:
+          - healthy
+          - degraded
+          - down
+        version:
+          type: string
+        timestamp:
+          type: string
+          format: date-time
+  securitySchemes:
+    oauth2:
+      type: oauth2
+      flows:
+        clientCredentials:
+          tokenUrl: https://api.economy.com/oauth2/token
+          scopes:
+            read: Read access to entitled Moody's Analytics products
+            write: Write access for job submission and basket / order management
+    hmac:
+      type: apiKey
+      in: header
+      name: Authorization
+      description: HMAC-SHA256 request signing scheme used as an alternative to OAuth2 on legacy Moody's Analytics product APIs (Data Buffet, Scenario Studio).
+externalDocs:
+  description: Moody's Analytics Developer Portal
+  url: https://developer.moodys.com/

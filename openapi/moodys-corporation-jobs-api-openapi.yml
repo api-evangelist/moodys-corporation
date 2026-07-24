@@ -1,0 +1,165 @@
+openapi: 3.1.0
+info:
+  title: Moody's Analytics Developer Platform Authentication Jobs API
+  version: 1.0.0
+  description: Cross-cutting umbrella API surface for the Moody's Analytics developer platform covering authentication (OAuth2 client credentials and HMAC request signing), platform health, product catalog discovery, and a canonical pattern for asynchronous analysis-job execution used across multiple Moody's Analytics product APIs (Data Buffet, Scenario Studio, ImpairmentStudio, AutoCycle, ECCL).
+  contact:
+    name: Moody's Analytics Developer Support
+    email: helpeconomy@moodys.com
+    url: https://developer.moodys.com/
+  license:
+    name: Moody's Analytics Terms of Use
+    url: https://www.moodys.com/web/en/us/about/legal/terms-of-use.html
+servers:
+- url: https://api.economy.com
+  description: Moody's Analytics economy.com API gateway
+- url: https://api.moodys.com
+  description: Moody's Analytics moodys.com API gateway
+security:
+- oauth2: []
+tags:
+- name: Jobs
+  description: Asynchronous analysis-job submission, polling, and output retrieval
+paths:
+  /jobs:
+    post:
+      operationId: submitJob
+      summary: Moody's Submit Analysis Job
+      description: Submits an asynchronous analysis job (e.g. an ImpairmentStudio run, a Data Buffet bulk order, or a Scenario Studio scenario generation). Returns the job identifier used to poll status and download output.
+      tags:
+      - Jobs
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/JobRequest'
+      responses:
+        '202':
+          description: Job accepted
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Job'
+        '400':
+          description: Invalid job request
+  /jobs/{jobId}:
+    get:
+      operationId: getJob
+      summary: Moody's Get Job Status
+      description: Returns the current status of an analysis job.
+      tags:
+      - Jobs
+      parameters:
+      - $ref: '#/components/parameters/jobId'
+      responses:
+        '200':
+          description: Job status
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Job'
+        '404':
+          description: Job not found
+  /jobs/{jobId}/output:
+    get:
+      operationId: downloadJobOutput
+      summary: Moody's Download Job Output
+      description: Downloads the binary or JSON output of a completed analysis job.
+      tags:
+      - Jobs
+      parameters:
+      - $ref: '#/components/parameters/jobId'
+      responses:
+        '200':
+          description: Output returned
+          content:
+            application/octet-stream:
+              schema:
+                type: string
+                format: binary
+            application/json:
+              schema:
+                type: object
+        '404':
+          description: Job not found or not complete
+components:
+  schemas:
+    Job:
+      type: object
+      properties:
+        jobId:
+          type: string
+        productId:
+          type: string
+        status:
+          type: string
+          enum:
+          - queued
+          - running
+          - completed
+          - failed
+          - cancelled
+        submittedAt:
+          type: string
+          format: date-time
+        completedAt:
+          type: string
+          format: date-time
+        outputUrl:
+          type: string
+          format: uri
+        error:
+          $ref: '#/components/schemas/Error'
+    Error:
+      type: object
+      properties:
+        code:
+          type: string
+        message:
+          type: string
+        details:
+          type: object
+          additionalProperties: true
+    JobRequest:
+      type: object
+      required:
+      - productId
+      - inputs
+      properties:
+        productId:
+          type: string
+          description: The Moody's Analytics product to run the job against.
+        name:
+          type: string
+        inputs:
+          type: object
+          additionalProperties: true
+        notifyUrl:
+          type: string
+          format: uri
+  parameters:
+    jobId:
+      name: jobId
+      in: path
+      required: true
+      description: The identifier of an analysis job.
+      schema:
+        type: string
+  securitySchemes:
+    oauth2:
+      type: oauth2
+      flows:
+        clientCredentials:
+          tokenUrl: https://api.economy.com/oauth2/token
+          scopes:
+            read: Read access to entitled Moody's Analytics products
+            write: Write access for job submission and basket / order management
+    hmac:
+      type: apiKey
+      in: header
+      name: Authorization
+      description: HMAC-SHA256 request signing scheme used as an alternative to OAuth2 on legacy Moody's Analytics product APIs (Data Buffet, Scenario Studio).
+externalDocs:
+  description: Moody's Analytics Developer Portal
+  url: https://developer.moodys.com/

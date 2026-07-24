@@ -1,0 +1,98 @@
+openapi: 3.1.0
+info:
+  title: Moody's Analytics Developer Platform Authentication API
+  version: 1.0.0
+  description: Cross-cutting umbrella API surface for the Moody's Analytics developer platform covering authentication (OAuth2 client credentials and HMAC request signing), platform health, product catalog discovery, and a canonical pattern for asynchronous analysis-job execution used across multiple Moody's Analytics product APIs (Data Buffet, Scenario Studio, ImpairmentStudio, AutoCycle, ECCL).
+  contact:
+    name: Moody's Analytics Developer Support
+    email: helpeconomy@moodys.com
+    url: https://developer.moodys.com/
+  license:
+    name: Moody's Analytics Terms of Use
+    url: https://www.moodys.com/web/en/us/about/legal/terms-of-use.html
+servers:
+- url: https://api.economy.com
+  description: Moody's Analytics economy.com API gateway
+- url: https://api.moodys.com
+  description: Moody's Analytics moodys.com API gateway
+security:
+- oauth2: []
+tags:
+- name: Authentication
+  description: OAuth2 client-credentials token issuance and HMAC signing helpers
+paths:
+  /oauth2/token:
+    post:
+      operationId: getAccessToken
+      summary: Moody's Obtain an Access Token
+      description: Issues an OAuth2 bearer token using client_credentials grant. The returned token is valid for one hour and must be presented as a Bearer token on subsequent requests.
+      tags:
+      - Authentication
+      security: []
+      requestBody:
+        required: true
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/TokenRequest'
+      responses:
+        '200':
+          description: Token issued
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AccessToken'
+        '400':
+          description: Malformed token request
+        '401':
+          description: Invalid client credentials
+components:
+  schemas:
+    AccessToken:
+      type: object
+      properties:
+        access_token:
+          type: string
+        token_type:
+          type: string
+          enum:
+          - Bearer
+        expires_in:
+          type: integer
+          description: Lifetime of the token in seconds.
+        scope:
+          type: string
+    TokenRequest:
+      type: object
+      required:
+      - grant_type
+      - client_id
+      - client_secret
+      properties:
+        grant_type:
+          type: string
+          enum:
+          - client_credentials
+        client_id:
+          type: string
+        client_secret:
+          type: string
+        scope:
+          type: string
+  securitySchemes:
+    oauth2:
+      type: oauth2
+      flows:
+        clientCredentials:
+          tokenUrl: https://api.economy.com/oauth2/token
+          scopes:
+            read: Read access to entitled Moody's Analytics products
+            write: Write access for job submission and basket / order management
+    hmac:
+      type: apiKey
+      in: header
+      name: Authorization
+      description: HMAC-SHA256 request signing scheme used as an alternative to OAuth2 on legacy Moody's Analytics product APIs (Data Buffet, Scenario Studio).
+externalDocs:
+  description: Moody's Analytics Developer Portal
+  url: https://developer.moodys.com/

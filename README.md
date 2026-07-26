@@ -23,12 +23,6 @@ Moody's Corporation (NYSE: MCO) is a global integrated risk-assessment firm oper
 
 ## APIs
 
-### Moody's Ratings (Moody's Investors Service)
-
-Moody's Ratings (formerly Moody's Investors Service / MIS) publishes credit ratings, research, and risk analysis on debt obligations issued by corporations, governments, and structured finance vehicles. Ratings, research, and the issuer/instrument reference data underpin the firm's research feeds and licensed data products consumed by institutional subscribers and downstream data redistributors.
-
-- **Human URL:** [https://ratings.moodys.com/](https://ratings.moodys.com/)
-- **Base URL:** `https://ratings.moodys.com/`
 
 #### Tags
 
@@ -279,12 +273,6 @@ APIs for the RMS Intelligent Risk Platform covering catastrophe modeling, exposu
 - [Postman Collection](collections/moodys-data-buffet-api.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
 - [Open Collection](collections/moodys-data-buffet-api.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
 
-### Moody's ESG & Climate Solutions API
-
-ESG scores, controversies, climate physical and transition risk metrics sourced from Four Twenty Seven and Moody's ESG Solutions. Used for portfolio screening, sustainable-finance reporting, climate scenario analysis, and regulatory disclosure (TCFD / CSRD / SFDR).
-
-- **Human URL:** [https://www.moodys.com/web/en/us/capabilities/esg-and-climate.html](https://www.moodys.com/web/en/us/capabilities/esg-and-climate.html)
-- **Base URL:** `https://api.moodys.com/esg`
 
 #### Tags
 

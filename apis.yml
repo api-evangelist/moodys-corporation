@@ -8,9 +8,22 @@ description: >-
   portal at developer.moodys.com, with deeper API surfaces published at api.economy.com (Data Buffet, Scenario Studio,
   AutoCycle, ECCL) and through subsidiary brands including Bureau van Dijk (Orbis), RMS (catastrophe risk), Kompany /
   Passfort (KYC), and Four Twenty Seven (climate).
-image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+accessModel:
+  pricing: freemium
+  onboarding: self-serve
+  trial: false
+  try_now: true
+  public: false
+  label: Freemium · Self-serve signup
+  confidence: high
+  source:
+    - plans
+    - authentication
+  generated: '2026-07-22'
+  method: derived
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/moodys-corporation.png
 url: https://github.com/api-evangelist/moodys-corporation/blob/main/apis.yml
-modified: '2026-05-23'
+modified: '2026-07-25'
 specificationVersion: '0.16'
 tags:
   - Analytics
@@ -49,83 +62,16 @@ common:
     type: Contact
   - url: https://www.moodys.com/web/en/us/insights/all.html
     type: Insights
+  - type: Investors
+    url: https://ratings.moodys.com/
 apis:
-  - aid: moodys-corporation:moodys-ratings
-    name: Moody's Ratings (Moody's Investors Service)
-    description: >-
-      Moody's Ratings (formerly Moody's Investors Service / MIS) publishes credit ratings, research, and risk analysis
-      on debt obligations issued by corporations, governments, and structured finance vehicles. Ratings, research, and
-      the issuer/instrument reference data underpin the firm's research feeds and licensed data products consumed by
-      institutional subscribers and downstream data redistributors.
-    tags:
-      - Credit Ratings
-      - Debt
-      - Fixed Income
-      - Issuer Reference Data
-      - Research
-      - Sovereign
-      - Structured Finance
-    humanURL: https://ratings.moodys.com/
-    baseURL: https://ratings.moodys.com/
-    image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
-    properties:
-      - url: https://ratings.moodys.com/
-        type: Portal
-      - url: https://www.moodys.com/web/en/us/about/legal/terms-of-use.html
-        type: TermsOfService
-  - aid: moodys-corporation:developer-platform
-    name: Moody's Analytics Developer Platform
-    description: >-
-      Umbrella developer platform spanning Moody's Analytics APIs across economic data, credit risk, KYC, ESG, climate,
-      and risk modeling. Hosts API catalogs, OpenAPI specifications, authentication (OAuth2 client credentials and
-      HMAC), sandbox keys, and code samples for downstream Moody's API products including Data Buffet, Scenario Studio,
-      AutoCycle, ECCL, ImpairmentStudio, RMS Intelligent Risk Platform, Orbis, and Passfort.
-    tags:
-      - API Catalog
-      - Developer Portal
-      - OAuth2
-      - SDKs
-    humanURL: https://developer.moodys.com/
-    baseURL: https://developer.moodys.com/
-    image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
-    properties:
-      - url: https://developer.moodys.com/
-        type: Portal
-      - url: https://hub.moodysanalytics.com/
-        type: Hub
-      - url: https://github.com/moodysanalytics
-        type: GitHubOrganization
-      - url: openapi/moodys-analytics-developer-openapi.yml
-        type: OpenAPI
-  - aid: moodys-corporation:data-buffet-api
-    name: Moody's Analytics Data Buffet API
-    description: >-
-      Programmatic access to international and subnational economic, demographic, and financial time-series data and
-      forecasts. Supports retrieval of single or multi-series, basket creation, asynchronous bulk orders, and search
-      against the Data Buffet repository. Authentication is OAuth2 client credentials with HMAC signing; rate-limited at
-      one request per second and a 1 GB monthly data cap per key.
-    tags:
-      - Demographics
-      - Economic Data
-      - Forecasts
-      - Time Series
-    humanURL: https://www.economy.com/products/tools/data-buffet
-    baseURL: https://api.economy.com/data/v1
-    image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
-    properties:
-      - url: https://api.economy.com/data/v1/swagger
-        type: Documentation
-      - url: https://github.com/moodysanalytics/databuffet-api-codesamples
-        type: GitHubOrganization
-      - url: openapi/moodys-data-buffet-api-openapi.yml
-        type: OpenAPI
   - aid: moodys-corporation:scenario-studio-api
     name: Moody's Analytics Scenario Studio API
     description: >-
-      Programmatic access to the Scenario Studio macroeconomic scenario platform, enabling automatic retrieval of custom
-      scenarios generated against the Moody's Analytics Global Macroeconomic Model. Supports OAuth and HMAC
-      authentication and returns JSON responses; a Postman collection and Python / R client libraries ship with the
-      published code samples.
+      Programmatic access to the Scenario Studio macroeconomic scenario platform, enabling automatic retrieval
+      of custom scenarios generated against the Moody's Analytics Global Macroeconomic Model. Supports OAuth
+      and HMAC authentication and returns JSON responses; a Postman collection and Python / R client libraries
+      ship with the published code samples.
     tags:
       - Economic Models
       - Forecasting
@@ -142,8 +88,8 @@ apis:
   - aid: moodys-corporation:autocycle-api
     name: Moody's AutoCycle API
     description: >-
-      Retrieves forecasts of vehicle prices from AutoCycle models, integrating Moody's Analytics economic data and
-      scenarios for automotive residual value forecasting.
+      Retrieves forecasts of vehicle prices from AutoCycle models, integrating Moody's Analytics economic
+      data and scenarios for automotive residual value forecasting.
     tags:
       - Automotive
       - Forecasts
@@ -158,8 +104,9 @@ apis:
   - aid: moodys-corporation:eccl-api
     name: Moody's Expected Consumer Credit Loss (ECCL) API
     description: >-
-      Retrieves expected consumer credit loss forecasts under baseline and stress scenarios. Combines customer data,
-      economic data from Moody's Analytics, and consumer credit data for credit risk modeling and CCAR / CECL workflows.
+      Retrieves expected consumer credit loss forecasts under baseline and stress scenarios. Combines customer
+      data, economic data from Moody's Analytics, and consumer credit data for credit risk modeling and
+      CCAR / CECL workflows.
     tags:
       - CECL
       - Consumer Credit
@@ -175,9 +122,9 @@ apis:
   - aid: moodys-corporation:impairmentstudio-api
     name: Moody's ImpairmentStudio API
     description: >-
-      Programmatic interface to ImpairmentStudio for CECL impairment estimation. Supports importing input datasets,
-      triggering analyses, polling job status, and downloading analysis outputs via the apic Python CLI or direct API
-      calls.
+      Programmatic interface to ImpairmentStudio for CECL impairment estimation. Supports importing input
+      datasets, triggering analyses, polling job status, and downloading analysis outputs via the apic Python
+      CLI or direct API calls.
     tags:
       - CECL
       - Credit Loss
@@ -192,10 +139,10 @@ apis:
   - aid: moodys-corporation:orbis-api
     name: Moody's Orbis (Bureau van Dijk) API
     description: >-
-      Access to Orbis, the Bureau van Dijk company information database covering hundreds of millions of public and
-      private companies worldwide with ownership, financials, officers, beneficial owners, ESG, and corporate
-      family-tree data. The Orbis API and bulk data integrations feed KYC, compliance, third-party risk, and credit
-      workflows.
+      Access to Orbis, the Bureau van Dijk company information database covering hundreds of millions of
+      public and private companies worldwide with ownership, financials, officers, beneficial owners, ESG,
+      and corporate family-tree data. The Orbis API and bulk data integrations feed KYC, compliance, third-party
+      risk, and credit workflows.
     tags:
       - Beneficial Ownership
       - Company Data
@@ -212,9 +159,9 @@ apis:
   - aid: moodys-corporation:kyc-api
     name: Moody's KYC API (Kompany / Maxsight Entity Verification)
     description: >-
-      Verifies businesses against authoritative primary-source government registers in real time, returning legal entity
-      records, ultimate beneficial owners, registered documents, and AML / sanctions screening signals. Powers the
-      Maxsight Entity Verification API and Kompany Live Search.
+      Verifies businesses against authoritative primary-source government registers in real time, returning
+      legal entity records, ultimate beneficial owners, registered documents, and AML / sanctions screening
+      signals. Powers the Maxsight Entity Verification API and Kompany Live Search.
     tags:
       - Anti-Money Laundering
       - Compliance
@@ -231,9 +178,9 @@ apis:
   - aid: moodys-corporation:passfort-api
     name: Moody's Passfort Lifecycle API
     description: >-
-      Customer lifecycle and KYC orchestration platform enabling onboarding, perpetual KYC, customer due diligence, and
-      supplier risk workflows. Exposes a Custom Check Framework so integrators can plug additional data providers into
-      Passfort's policy engine.
+      Customer lifecycle and KYC orchestration platform enabling onboarding, perpetual KYC, customer due
+      diligence, and supplier risk workflows. Exposes a Custom Check Framework so integrators can plug additional
+      data providers into Passfort's policy engine.
     tags:
       - Customer Due Diligence
       - KYC
@@ -249,9 +196,9 @@ apis:
   - aid: moodys-corporation:rms-irp-api
     name: Moody's RMS Intelligent Risk Platform (IRP) API
     description: >-
-      APIs for the RMS Intelligent Risk Platform covering catastrophe modeling, exposure management, and event response
-      across natural perils (hurricane, earthquake, flood, severe convective storm, wildfire), terrorism, cyber, and
-      life / health events for insurance and reinsurance use cases.
+      APIs for the RMS Intelligent Risk Platform covering catastrophe modeling, exposure management, and
+      event response across natural perils (hurricane, earthquake, flood, severe convective storm, wildfire),
+      terrorism, cyber, and life / health events for insurance and reinsurance use cases.
     tags:
       - Catastrophe Risk
       - Cyber Risk
@@ -265,27 +212,186 @@ apis:
     properties:
       - url: https://www.rms.com/products/risk-modeler
         type: Documentation
-  - aid: moodys-corporation:esg-climate-api
-    name: Moody's ESG & Climate Solutions API
-    description: >-
-      ESG scores, controversies, climate physical and transition risk metrics sourced from Four Twenty Seven and Moody's
-      ESG Solutions. Used for portfolio screening, sustainable-finance reporting, climate scenario analysis, and
-      regulatory disclosure (TCFD / CSRD / SFDR).
+  - aid: moodys-corporation:moodys-corporation-authentication-api
+    name: Moody's Corporation Authentication API
+    description: OAuth2 client-credentials token issuance and HMAC signing helpers
+    humanURL: https://ratings.moodys.com/
+    baseURL: https://ratings.moodys.com/
     tags:
-      - Climate Risk
-      - Controversies
-      - CSRD
-      - ESG Scores
-      - Physical Risk
-      - SFDR
-      - TCFD
-      - Transition Risk
-    humanURL: https://www.moodys.com/web/en/us/capabilities/esg-and-climate.html
-    baseURL: https://api.moodys.com/esg
-    image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+      - Authentication
     properties:
-      - url: https://www.moodys.com/web/en/us/capabilities/esg-and-climate.html
-        type: Documentation
+      - type: OpenAPI
+        url: openapi/moodys-corporation-authentication-api-openapi.yml
+      - type: Portal
+        url: https://developer.moodys.com/
+      - type: Hub
+        url: https://hub.moodysanalytics.com/
+      - type: GitHubOrganization
+        url: https://github.com/moodysanalytics
+      - type: Documentation
+        url: https://api.economy.com/data/v1/swagger
+      - type: GitHubOrganization
+        url: https://github.com/moodysanalytics/databuffet-api-codesamples
+  - aid: moodys-corporation:moodys-corporation-baskets-api
+    name: Moody's Corporation Baskets API
+    description: Operations for creating and managing collections of series requests
+    humanURL: https://ratings.moodys.com/
+    baseURL: https://ratings.moodys.com/
+    tags:
+      - Baskets
+    properties:
+      - type: OpenAPI
+        url: openapi/moodys-corporation-baskets-api-openapi.yml
+      - type: Portal
+        url: https://developer.moodys.com/
+      - type: Hub
+        url: https://hub.moodysanalytics.com/
+      - type: GitHubOrganization
+        url: https://github.com/moodysanalytics
+      - type: Documentation
+        url: https://api.economy.com/data/v1/swagger
+      - type: GitHubOrganization
+        url: https://github.com/moodysanalytics/databuffet-api-codesamples
+  - aid: moodys-corporation:moodys-corporation-catalog-api
+    name: Moody's Corporation Catalog API
+    description: Discovery of available products, datasets, and entitlements
+    humanURL: https://ratings.moodys.com/
+    baseURL: https://ratings.moodys.com/
+    tags:
+      - Catalog
+    properties:
+      - type: OpenAPI
+        url: openapi/moodys-corporation-catalog-api-openapi.yml
+      - type: Portal
+        url: https://developer.moodys.com/
+      - type: Hub
+        url: https://hub.moodysanalytics.com/
+      - type: GitHubOrganization
+        url: https://github.com/moodysanalytics
+      - type: Documentation
+        url: https://api.economy.com/data/v1/swagger
+      - type: GitHubOrganization
+        url: https://github.com/moodysanalytics/databuffet-api-codesamples
+  - aid: moodys-corporation:moodys-corporation-health-api
+    name: Moody's Corporation Health API
+    description: Platform availability and version metadata
+    humanURL: https://ratings.moodys.com/
+    baseURL: https://ratings.moodys.com/
+    tags:
+      - Health
+    properties:
+      - type: OpenAPI
+        url: openapi/moodys-corporation-health-api-openapi.yml
+      - type: Portal
+        url: https://developer.moodys.com/
+      - type: Hub
+        url: https://hub.moodysanalytics.com/
+      - type: GitHubOrganization
+        url: https://github.com/moodysanalytics
+      - type: Documentation
+        url: https://api.economy.com/data/v1/swagger
+      - type: GitHubOrganization
+        url: https://github.com/moodysanalytics/databuffet-api-codesamples
+  - aid: moodys-corporation:moodys-corporation-jobs-api
+    name: Moody's Corporation Jobs API
+    description: Asynchronous analysis-job submission, polling, and output retrieval
+    humanURL: https://ratings.moodys.com/
+    baseURL: https://ratings.moodys.com/
+    tags:
+      - Jobs
+    properties:
+      - type: OpenAPI
+        url: openapi/moodys-corporation-jobs-api-openapi.yml
+      - type: Portal
+        url: https://developer.moodys.com/
+      - type: Hub
+        url: https://hub.moodysanalytics.com/
+      - type: GitHubOrganization
+        url: https://github.com/moodysanalytics
+      - type: Documentation
+        url: https://api.economy.com/data/v1/swagger
+      - type: GitHubOrganization
+        url: https://github.com/moodysanalytics/databuffet-api-codesamples
+  - aid: moodys-corporation:moodys-corporation-orders-api
+    name: Moody's Corporation Orders API
+    description: Operations for managing data generation orders from baskets
+    humanURL: https://ratings.moodys.com/
+    baseURL: https://ratings.moodys.com/
+    tags:
+      - Orders
+    properties:
+      - type: OpenAPI
+        url: openapi/moodys-corporation-orders-api-openapi.yml
+      - type: Portal
+        url: https://developer.moodys.com/
+      - type: Hub
+        url: https://hub.moodysanalytics.com/
+      - type: GitHubOrganization
+        url: https://github.com/moodysanalytics
+      - type: Documentation
+        url: https://api.economy.com/data/v1/swagger
+      - type: GitHubOrganization
+        url: https://github.com/moodysanalytics/databuffet-api-codesamples
+  - aid: moodys-corporation:moodys-corporation-reference-api
+    name: Moody's Corporation Reference API
+    description: Operations for retrieving frequency, vintage, and file type metadata
+    humanURL: https://ratings.moodys.com/
+    baseURL: https://ratings.moodys.com/
+    tags:
+      - Reference
+    properties:
+      - type: OpenAPI
+        url: openapi/moodys-corporation-reference-api-openapi.yml
+      - type: Portal
+        url: https://developer.moodys.com/
+      - type: Hub
+        url: https://hub.moodysanalytics.com/
+      - type: GitHubOrganization
+        url: https://github.com/moodysanalytics
+      - type: Documentation
+        url: https://api.economy.com/data/v1/swagger
+      - type: GitHubOrganization
+        url: https://github.com/moodysanalytics/databuffet-api-codesamples
+  - aid: moodys-corporation:moodys-corporation-search-api
+    name: Moody's Corporation Search API
+    description: Operations for searching available datasets and series
+    humanURL: https://ratings.moodys.com/
+    baseURL: https://ratings.moodys.com/
+    tags:
+      - Search
+    properties:
+      - type: OpenAPI
+        url: openapi/moodys-corporation-search-api-openapi.yml
+      - type: Portal
+        url: https://developer.moodys.com/
+      - type: Hub
+        url: https://hub.moodysanalytics.com/
+      - type: GitHubOrganization
+        url: https://github.com/moodysanalytics
+      - type: Documentation
+        url: https://api.economy.com/data/v1/swagger
+      - type: GitHubOrganization
+        url: https://github.com/moodysanalytics/databuffet-api-codesamples
+  - aid: moodys-corporation:moodys-corporation-series-api
+    name: Moody's Corporation Series API
+    description: Operations for retrieving individual and multi-series time series data
+    humanURL: https://ratings.moodys.com/
+    baseURL: https://ratings.moodys.com/
+    tags:
+      - Series
+    properties:
+      - type: OpenAPI
+        url: openapi/moodys-corporation-series-api-openapi.yml
+      - type: Portal
+        url: https://developer.moodys.com/
+      - type: Hub
+        url: https://hub.moodysanalytics.com/
+      - type: GitHubOrganization
+        url: https://github.com/moodysanalytics
+      - type: Documentation
+        url: https://api.economy.com/data/v1/swagger
+      - type: GitHubOrganization
+        url: https://github.com/moodysanalytics/databuffet-api-codesamples
 maintainers:
   - FN: API Evangelist
     email: info@apievangelist.com

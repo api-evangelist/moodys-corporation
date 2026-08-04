@@ -1,0 +1,30 @@
+{
+  "provider": "moodys-corporation",
+  "sources": [
+    "moodys-corporation-authentication-api-openapi.yml",
+    "moodys-corporation-baskets-api-openapi.yml",
+    "moodys-corporation-catalog-api-openapi.yml",
+    "moodys-corporation-health-api-openapi.yml",
+    "moodys-corporation-jobs-api-openapi.yml",
+    "moodys-corporation-orders-api-openapi.yml",
+    "moodys-corporation-reference-api-openapi.yml",
+    "moodys-corporation-search-api-openapi.yml",
+    "moodys-corporation-series-api-openapi.yml"
+  ],
+  "outputs": [
+    "moodys-corporation-authentication-api-openapi.yml",
+    "moodys-corporation-baskets-api-openapi.yml",
+    "moodys-corporation-catalog-api-openapi.yml",
+    "moodys-corporation-health-api-openapi.yml",
+    "moodys-corporation-jobs-api-openapi.yml",
+    "moodys-corporation-orders-api-openapi.yml",
+    "moodys-corporation-reference-api-openapi.yml",
+    "moodys-corporation-search-api-openapi.yml",
+    "moodys-corporation-series-api-openapi.yml"
+  ],
+  "archived": [],
+  "errors": [],
+  "warnings": [],
+  "notes": [],
+  "skipped": []
+}

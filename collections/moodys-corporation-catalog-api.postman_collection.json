@@ -1,0 +1,276 @@
+{
+  "item": [
+    {
+      "id": "94ef93cf-3a48-4ddb-8330-ac853a6e2fae",
+      "name": "Catalog",
+      "description": {
+        "content": "Discovery of available products, datasets, and entitlements",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "fc5ab007-a86f-4409-8d3e-1ee8b57744da",
+          "name": "Moody's List Catalog Products",
+          "request": {
+            "name": "Moody's List Catalog Products",
+            "description": {
+              "content": "Lists Moody's Analytics product APIs the caller is entitled to, including base URL, version, and documentation URL per product.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "catalog",
+                "products"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "22d2fda1-b334-4083-a46c-15e228fe982b",
+              "name": "Product catalog returned",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "catalog",
+                    "products"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"productId\": \"string\",\n    \"name\": \"string\",\n    \"description\": \"string\",\n    \"baseUrl\": \"http://tPMlijPZGTfaeu.nzkbqEU.bh+UxZyULnKU+1ovDoprinDaG5SvkktnHWC0mTfcEg4PvKBrFI\",\n    \"version\": \"string\",\n    \"documentationUrl\": \"http://DNbVTjfEjYFeNIXN.iydzX5rprPC9wGOumf\",\n    \"tags\": [\n      \"string\",\n      \"string\"\n    ]\n  },\n  {\n    \"productId\": \"string\",\n    \"name\": \"string\",\n    \"description\": \"string\",\n    \"baseUrl\": \"http://RknCsaCbelEPuH.fbHeVqN+wv-xNIHbn6FQSpiOItOSHcvOcqDexINkjLkchxnX\",\n    \"version\": \"string\",\n    \"documentationUrl\": \"https://PDuDwQ.lxjkqX9AsNW98\",\n    \"tags\": [\n      \"string\",\n      \"string\"\n    ]\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "ccdbdfbd-2c63-46bc-8876-a8327cbe9bf5",
+          "name": "Moody's Get Catalog Product",
+          "request": {
+            "name": "Moody's Get Catalog Product",
+            "description": {
+              "content": "Returns metadata for a single product in the catalog.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "catalog",
+                "products",
+                ":productId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "productId",
+                  "description": "(Required) The identifier of a Moody's Analytics product in the catalog."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "382dff4b-df12-4e90-a54c-5736c7713d43",
+              "name": "Product returned",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "catalog",
+                    "products",
+                    ":productId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "productId",
+                      "description": "(Required) The identifier of a Moody's Analytics product in the catalog."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"productId\": \"string\",\n  \"name\": \"string\",\n  \"description\": \"string\",\n  \"baseUrl\": \"http://UOsIQvWOllwkWEQOrt.znzxxIalqja5p1V.NPRU0Tx2Cc4tNzAeijCCopU9QDZrJtIsG\",\n  \"version\": \"string\",\n  \"documentationUrl\": \"http://QfMcyQ.vjySTK6gQttr9t,8qbBcgmV9YHARi.Zq4oPYq\",\n  \"tags\": [\n    \"string\",\n    \"string\"\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "c8be4d9b-1afc-456b-b640-c870622a482e",
+              "name": "Product not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "catalog",
+                    "products",
+                    ":productId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "productId",
+                      "description": "(Required) The identifier of a Moody's Analytics product in the catalog."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.economy.com",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "oauth2",
+    "oauth2": [
+      {
+        "key": "scope",
+        "value": "read write"
+      },
+      {
+        "key": "accessTokenUrl",
+        "value": "https://api.economy.com/oauth2/token"
+      },
+      {
+        "key": "grant_type",
+        "value": "client_credentials"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "32adc17e-9211-476f-9c83-9177a63286c4",
+    "name": "Moody's Analytics Developer Platform Authentication Catalog API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Cross-cutting umbrella API surface for the Moody's Analytics developer platform covering authentication (OAuth2 client credentials and HMAC request signing), platform health, product catalog discovery, and a canonical pattern for asynchronous analysis-job execution used across multiple Moody's Analytics product APIs (Data Buffet, Scenario Studio, ImpairmentStudio, AutoCycle, ECCL).\n\nContact Support:\n Name: Moody's Analytics Developer Support\n Email: helpeconomy@moodys.com",
+      "type": "text/plain"
+    }
+  }
+}

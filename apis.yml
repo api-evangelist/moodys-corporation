@@ -92,6 +92,11 @@ apis:
       data and scenarios for automotive residual value forecasting.
     tags:
       - Automotive
+      - Forecast
+      - Residual Value
+      - Vehicle Pricing
+    tags_raw:
+      - Automotive
       - Forecasts
       - Residual Value
       - Vehicle Pricing
@@ -108,6 +113,12 @@ apis:
       data, economic data from Moody's Analytics, and consumer credit data for credit risk modeling and
       CCAR / CECL workflows.
     tags:
+      - CECL
+      - Consumer Credit
+      - Credit Loss
+      - Forecast
+      - Risk
+    tags_raw:
       - CECL
       - Consumer Credit
       - Credit Loss
@@ -182,6 +193,12 @@ apis:
       diligence, and supplier risk workflows. Exposes a Custom Check Framework so integrators can plug additional
       data providers into Passfort's policy engine.
     tags:
+      - Customer Due Diligence
+      - KYC
+      - Onboarding
+      - Perpetual KYC
+      - Workflows
+    tags_raw:
       - Customer Due Diligence
       - KYC
       - Onboarding
@@ -298,6 +315,8 @@ apis:
     humanURL: https://ratings.moodys.com/
     baseURL: https://ratings.moodys.com/
     tags:
+      - Job
+    tags_raw:
       - Jobs
     properties:
       - type: OpenAPI
@@ -318,6 +337,8 @@ apis:
     humanURL: https://ratings.moodys.com/
     baseURL: https://ratings.moodys.com/
     tags:
+      - Order
+    tags_raw:
       - Orders
     properties:
       - type: OpenAPI

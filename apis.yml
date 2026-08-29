@@ -8,6 +8,18 @@ description: >-
   portal at developer.moodys.com, with deeper API surfaces published at api.economy.com (Data Buffet, Scenario Studio,
   AutoCycle, ECCL) and through subsidiary brands including Bureau van Dijk (Orbis), RMS (catastrophe risk), Kompany /
   Passfort (KYC), and Four Twenty Seven (climate).
+deliveryModel:
+  model: saas
+  open_source: false
+  commercial: true
+  callable_host: true
+  label: Hosted service · you call their endpoint
+  confidence: high
+  source:
+  - openapi
+  - pricing
+  generated: '2026-08-28'
+  method: derived
 accessModel:
   pricing: freemium
   onboarding: self-serve

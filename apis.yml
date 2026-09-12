@@ -50,6 +50,8 @@ tags:
   - Risk
   - Fortune 1000
 common:
+  - type: Website
+    url: https://www.moodys.com/
   - type: AgenticAccess
     url: agentic-access/moodys-corporation-agentic-access.yml
   - type: DomainSecurity

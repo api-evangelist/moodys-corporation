@@ -172,6 +172,13 @@ apis:
       - Beneficial Ownership
       - Company Data
       - Corporate Family Tree
+      - Financial
+      - KYC
+      - Reference Data
+    tags_raw:
+      - Beneficial Ownership
+      - Company Data
+      - Corporate Family Tree
       - Financials
       - KYC
       - Reference Data

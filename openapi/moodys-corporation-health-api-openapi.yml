@@ -1,20 +1,18 @@
-openapi: 3.1.0
+openapi: 3.2.0
 info:
-  title: Moody's Analytics Developer Platform Authentication Health API
+  title: Moodys Corporation Health API
   version: 1.0.0
-  description: Cross-cutting umbrella API surface for the Moody's Analytics developer platform covering authentication (OAuth2 client credentials and HMAC request signing), platform health, product catalog discovery, and a canonical pattern for asynchronous analysis-job execution used across multiple Moody's Analytics product APIs (Data Buffet, Scenario Studio, ImpairmentStudio, AutoCycle, ECCL).
-  contact:
-    name: Moody's Analytics Developer Support
-    email: helpeconomy@moodys.com
-    url: https://developer.moodys.com/
   license:
     name: Moody's Analytics Terms of Use
     url: https://www.moodys.com/web/en/us/about/legal/terms-of-use.html
+  description: 'Operations tagged Health across 2 of this provider''s published API definitions: moodys-analytics-developer-openapi.yml, moodys-data-buffet-api-openapi.yml. Each path carries the servers of the definition it was published in.'
 servers:
 - url: https://api.economy.com
   description: Moody's Analytics economy.com API gateway
 - url: https://api.moodys.com
   description: Moody's Analytics moodys.com API gateway
+- url: https://api.economy.com/data/v1
+  description: Moody's Analytics Data Buffet production server
 security:
 - oauth2: []
 tags:
@@ -36,6 +34,11 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Health'
+    servers:
+    - url: https://api.economy.com
+      description: Moody's Analytics economy.com API gateway
+    - url: https://api.moodys.com
+      description: Moody's Analytics moodys.com API gateway
 components:
   schemas:
     Health:
@@ -52,6 +55,29 @@ components:
         timestamp:
           type: string
           format: date-time
+    HealthStatus:
+      type: object
+      description: Service health status information.
+      required:
+      - status
+      properties:
+        status:
+          type: string
+          description: Overall service health status.
+          enum:
+          - Healthy
+          - Degraded
+          - Unavailable
+          example: Healthy
+        timestamp:
+          type: string
+          format: date-time
+          description: Timestamp of the health check.
+          example: '2026-01-15T10:30:00Z'
+        version:
+          type: string
+          description: Current API version.
+          example: example_value
   securitySchemes:
     oauth2:
       type: oauth2
@@ -66,6 +92,6 @@ components:
       in: header
       name: Authorization
       description: HMAC-SHA256 request signing scheme used as an alternative to OAuth2 on legacy Moody's Analytics product APIs (Data Buffet, Scenario Studio).
-externalDocs:
-  description: Moody's Analytics Developer Portal
-  url: https://developer.moodys.com/
+x-refined-from:
+- moodys-analytics-developer-openapi.yml
+- moodys-data-buffet-api-openapi.yml

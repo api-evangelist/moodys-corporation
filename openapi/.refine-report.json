@@ -1,22 +1,15 @@
 {
   "provider": "moodys-corporation",
   "sources": [
-    "moodys-corporation-authentication-api-openapi.yml",
-    "moodys-corporation-baskets-api-openapi.yml",
-    "moodys-corporation-catalog-api-openapi.yml",
-    "moodys-corporation-health-api-openapi.yml",
-    "moodys-corporation-jobs-api-openapi.yml",
-    "moodys-corporation-orders-api-openapi.yml",
-    "moodys-corporation-reference-api-openapi.yml",
-    "moodys-corporation-search-api-openapi.yml",
-    "moodys-corporation-series-api-openapi.yml"
+    "_original/moodys-analytics-developer-openapi.yml",
+    "_original/moodys-data-buffet-api-openapi.yml"
   ],
   "outputs": [
     "moodys-corporation-authentication-api-openapi.yml",
-    "moodys-corporation-baskets-api-openapi.yml",
     "moodys-corporation-catalog-api-openapi.yml",
     "moodys-corporation-health-api-openapi.yml",
     "moodys-corporation-jobs-api-openapi.yml",
+    "moodys-corporation-baskets-api-openapi.yml",
     "moodys-corporation-orders-api-openapi.yml",
     "moodys-corporation-reference-api-openapi.yml",
     "moodys-corporation-search-api-openapi.yml",
@@ -25,6 +18,22 @@
   "archived": [],
   "errors": [],
   "warnings": [],
-  "notes": [],
-  "skipped": []
+  "notes": [
+    "sourced from openapi/_original/ (2 archived document(s)); previously refined output at the top level was skipped rather than re-split",
+    "moodys-analytics-developer-openapi.yml: upgraded openapi 3.1.0 -> OpenAPI 3.2.0",
+    "moodys-data-buffet-api-openapi.yml: upgraded openapi 3.1.0 -> OpenAPI 3.2.0",
+    "tag 'Health' spans 2 source specs (moodys-analytics-developer-openapi.yml, moodys-data-buffet-api-openapi.yml): per-path servers applied",
+    "apis.yml register: already-registered"
+  ],
+  "skipped": [
+    "moodys-corporation-authentication-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "moodys-corporation-baskets-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "moodys-corporation-catalog-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "moodys-corporation-health-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "moodys-corporation-jobs-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "moodys-corporation-orders-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "moodys-corporation-reference-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "moodys-corporation-search-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "moodys-corporation-series-api-openapi.yml: previously refined output, superseded by openapi/_original/"
+  ]
 }

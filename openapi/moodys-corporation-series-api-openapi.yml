@@ -90,72 +90,6 @@ paths:
         delay: 0
         dispatcher: FALLBACK
 components:
-  parameters:
-    mnemonic:
-      name: mnemonic
-      in: query
-      description: The unique series mnemonic identifier. Mnemonics follow the Data Buffet naming convention, e.g., FGDP_US for US GDP or EMPLPAY.IUSA for US total nonfarm payrolls.
-      required: true
-      schema:
-        type: string
-      examples:
-        usGdp:
-          summary: US Gross Domestic Product
-          value: FGDP_US
-        usPayrolls:
-          summary: US Total Nonfarm Payrolls
-          value: EMPLPAY.IUSA
-    startDate:
-      name: startDate
-      in: query
-      description: The start date for the data range in YYYY-MM-DD format. If omitted, returns data from the beginning of the series.
-      required: false
-      schema:
-        type: string
-        format: date
-    trans:
-      name: trans
-      in: query
-      description: The mathematical transformation to apply to the series values. Supports common economic transformations.
-      required: false
-      schema:
-        type: string
-        enum:
-        - Level
-        - SimpleDifference
-        - PercentChange
-        - AnnualizedGrowth
-        - YearOverYearPercentChange
-        - CompoundAnnualGrowthRate
-    freq:
-      name: freq
-      in: query
-      description: The desired output frequency for the series. When specified, frequency conversion is applied. For example, converting quarterly GDP to annual.
-      required: false
-      schema:
-        type: string
-        enum:
-        - A
-        - Q
-        - M
-        - W
-        - D
-    endDate:
-      name: endDate
-      in: query
-      description: The end date for the data range in YYYY-MM-DD format. If omitted, returns data through the latest available observation or forecast.
-      required: false
-      schema:
-        type: string
-        format: date
-    vintage:
-      name: vintage
-      in: query
-      description: The vintage date for accessing historical data revisions in YYYY-MM-DD format. If omitted, returns the latest vintage.
-      required: false
-      schema:
-        type: string
-        format: date
   schemas:
     SeriesRequest:
       type: object
@@ -203,18 +137,25 @@ components:
           format: date
           description: Vintage date for historical data revisions.
           example: '2026-01-15'
-    MultiSeriesResponse:
+    Error:
       type: object
-      description: Response containing multiple time series.
+      description: Standard error response.
       required:
-      - series
+      - code
+      - message
       properties:
-        series:
-          type: array
-          description: Array of time series responses.
-          items:
-            $ref: '#/components/schemas/SeriesResponse'
-          example: []
+        code:
+          type: string
+          description: Machine-readable error code.
+          example: example_value
+        message:
+          type: string
+          description: Human-readable error message.
+          example: example_value
+        details:
+          type: string
+          description: Additional details about the error.
+          example: example_value
     SeriesResponse:
       type: object
       description: Response containing a single time series with metadata and observations.
@@ -327,25 +268,84 @@ components:
           items:
             $ref: '#/components/schemas/SeriesRequest'
           example: []
-    Error:
+    MultiSeriesResponse:
       type: object
-      description: Standard error response.
+      description: Response containing multiple time series.
       required:
-      - code
-      - message
+      - series
       properties:
-        code:
-          type: string
-          description: Machine-readable error code.
-          example: example_value
-        message:
-          type: string
-          description: Human-readable error message.
-          example: example_value
-        details:
-          type: string
-          description: Additional details about the error.
-          example: example_value
+        series:
+          type: array
+          description: Array of time series responses.
+          items:
+            $ref: '#/components/schemas/SeriesResponse'
+          example: []
+  parameters:
+    trans:
+      name: trans
+      in: query
+      description: The mathematical transformation to apply to the series values. Supports common economic transformations.
+      required: false
+      schema:
+        type: string
+        enum:
+        - Level
+        - SimpleDifference
+        - PercentChange
+        - AnnualizedGrowth
+        - YearOverYearPercentChange
+        - CompoundAnnualGrowthRate
+    mnemonic:
+      name: mnemonic
+      in: query
+      description: The unique series mnemonic identifier. Mnemonics follow the Data Buffet naming convention, e.g., FGDP_US for US GDP or EMPLPAY.IUSA for US total nonfarm payrolls.
+      required: true
+      schema:
+        type: string
+      examples:
+        usGdp:
+          summary: US Gross Domestic Product
+          value: FGDP_US
+        usPayrolls:
+          summary: US Total Nonfarm Payrolls
+          value: EMPLPAY.IUSA
+    vintage:
+      name: vintage
+      in: query
+      description: The vintage date for accessing historical data revisions in YYYY-MM-DD format. If omitted, returns the latest vintage.
+      required: false
+      schema:
+        type: string
+        format: date
+    freq:
+      name: freq
+      in: query
+      description: The desired output frequency for the series. When specified, frequency conversion is applied. For example, converting quarterly GDP to annual.
+      required: false
+      schema:
+        type: string
+        enum:
+        - A
+        - Q
+        - M
+        - W
+        - D
+    startDate:
+      name: startDate
+      in: query
+      description: The start date for the data range in YYYY-MM-DD format. If omitted, returns data from the beginning of the series.
+      required: false
+      schema:
+        type: string
+        format: date
+    endDate:
+      name: endDate
+      in: query
+      description: The end date for the data range in YYYY-MM-DD format. If omitted, returns data through the latest available observation or forecast.
+      required: false
+      schema:
+        type: string
+        format: date
   securitySchemes:
     oauth2:
       type: oauth2

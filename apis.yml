@@ -1,5 +1,5 @@
 aid: moodys-corporation
-name: Moody's Corporation
+name: Moody's
 description: >-
   Moody's Corporation (NYSE: MCO) is a global integrated risk-assessment firm operating through two segments: Moody's
   Ratings (Moody's Investors Service), which publishes credit ratings and assessment services on debt obligations, and
@@ -38,6 +38,18 @@ url: https://github.com/api-evangelist/moodys-corporation/blob/main/apis.yml
 modified: '2026-07-25'
 specificationVersion: '0.23'
 tags:
+  - Analytics
+  - Catastrophe Risk
+  - Climate Risk
+  - Compliance
+  - Credit Ratings
+  - Economic Data
+  - ESG
+  - Financial Data
+  - KYC
+  - Risk Management
+  - Fortune 1000
+tags_raw:
   - Analytics
   - Catastrophe Risk
   - Climate Risk
@@ -131,7 +143,7 @@ apis:
       - Consumer Credit
       - Credit Loss
       - Forecast
-      - Risk
+      - Risk Management
     tags_raw:
       - CECL
       - Consumer Credit
@@ -172,7 +184,7 @@ apis:
       - Beneficial Ownership
       - Company Data
       - Corporate Family Tree
-      - Financial
+      - Finance
       - KYC
       - Reference Data
     tags_raw:
@@ -182,6 +194,7 @@ apis:
       - Financials
       - KYC
       - Reference Data
+      - Financial
     humanURL: https://www.bvdinfo.com/en-gb/our-products/data/international/orbis
     baseURL: https://orbis.bvdinfo.com/
     image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
@@ -195,6 +208,13 @@ apis:
       legal entity records, ultimate beneficial owners, registered documents, and AML / sanctions screening
       signals. Powers the Maxsight Entity Verification API and Kompany Live Search.
     tags:
+      - AML
+      - Compliance
+      - Entity Verification
+      - KYC
+      - Risk Management
+      - Sanctions Screening
+    tags_raw:
       - Anti-Money Laundering
       - Compliance
       - Entity Verification
@@ -454,3 +474,4 @@ x-common-properties:
     url: rate-limits/moodys-corporation-rate-limits.yml
   - type: FinOps
     url: finops/moodys-corporation-finops.yml
+x-legal-name: Moody's Corporation

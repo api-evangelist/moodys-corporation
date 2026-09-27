@@ -87,31 +87,6 @@ paths:
         dispatcher: FALLBACK
 components:
   schemas:
-    SearchResults:
-      type: object
-      description: Paginated search results for series queries.
-      required:
-      - totalCount
-      - results
-      properties:
-        totalCount:
-          type: integer
-          description: Total number of matching series across all pages.
-          example: 10
-        offset:
-          type: integer
-          description: The current pagination offset.
-          example: 10
-        limit:
-          type: integer
-          description: The maximum results per page.
-          example: 10
-        results:
-          type: array
-          description: Array of matching series metadata.
-          items:
-            $ref: '#/components/schemas/SeriesSummary'
-          example: []
     SeriesSummary:
       type: object
       description: Summary metadata for a series returned in search results.
@@ -176,6 +151,31 @@ components:
           type: string
           description: Additional details about the error.
           example: example_value
+    SearchResults:
+      type: object
+      description: Paginated search results for series queries.
+      required:
+      - totalCount
+      - results
+      properties:
+        totalCount:
+          type: integer
+          description: Total number of matching series across all pages.
+          example: 10
+        offset:
+          type: integer
+          description: The current pagination offset.
+          example: 10
+        limit:
+          type: integer
+          description: The maximum results per page.
+          example: 10
+        results:
+          type: array
+          description: Array of matching series metadata.
+          items:
+            $ref: '#/components/schemas/SeriesSummary'
+          example: []
   securitySchemes:
     oauth2:
       type: oauth2

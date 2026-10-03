@@ -85,16 +85,6 @@ paths:
           description: Job not found or not complete
 components:
   schemas:
-    Error:
-      type: object
-      properties:
-        code:
-          type: string
-        message:
-          type: string
-        details:
-          type: object
-          additionalProperties: true
     JobRequest:
       type: object
       required:
@@ -112,6 +102,16 @@ components:
         notifyUrl:
           type: string
           format: uri
+    Error:
+      type: object
+      properties:
+        code:
+          type: string
+        message:
+          type: string
+        details:
+          type: object
+          additionalProperties: true
     Job:
       type: object
       properties:

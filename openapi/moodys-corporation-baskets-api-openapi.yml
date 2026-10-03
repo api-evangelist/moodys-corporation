@@ -146,6 +146,46 @@ paths:
         dispatcher: FALLBACK
 components:
   schemas:
+    Error:
+      type: object
+      description: Standard error response.
+      required:
+      - code
+      - message
+      properties:
+        code:
+          type: string
+          description: Machine-readable error code.
+          example: example_value
+        message:
+          type: string
+          description: Human-readable error message.
+          example: example_value
+        details:
+          type: string
+          description: Additional details about the error.
+          example: example_value
+    BasketCreate:
+      type: object
+      description: Request body for creating or updating a basket.
+      required:
+      - name
+      - series
+      properties:
+        name:
+          type: string
+          description: User-defined name for the basket.
+          example: Example Title
+        description:
+          type: string
+          description: Optional description of the basket.
+          example: A sample description.
+        series:
+          type: array
+          description: The series requests to include in the basket.
+          items:
+            $ref: '#/components/schemas/SeriesRequest'
+          example: []
     SeriesRequest:
       type: object
       description: A single series request within a multi-series call.
@@ -192,25 +232,6 @@ components:
           format: date
           description: Vintage date for historical data revisions.
           example: '2026-01-15'
-    Error:
-      type: object
-      description: Standard error response.
-      required:
-      - code
-      - message
-      properties:
-        code:
-          type: string
-          description: Machine-readable error code.
-          example: example_value
-        message:
-          type: string
-          description: Human-readable error message.
-          example: example_value
-        details:
-          type: string
-          description: Additional details about the error.
-          example: example_value
     Basket:
       type: object
       description: A saved collection of series requests that can be executed as an order for bulk data retrieval.
@@ -247,27 +268,6 @@ components:
           format: date-time
           description: When the basket was last modified.
           example: '2026-01-15T10:30:00Z'
-    BasketCreate:
-      type: object
-      description: Request body for creating or updating a basket.
-      required:
-      - name
-      - series
-      properties:
-        name:
-          type: string
-          description: User-defined name for the basket.
-          example: Example Title
-        description:
-          type: string
-          description: Optional description of the basket.
-          example: A sample description.
-        series:
-          type: array
-          description: The series requests to include in the basket.
-          items:
-            $ref: '#/components/schemas/SeriesRequest'
-          example: []
   parameters:
     basketId:
       name: basketId

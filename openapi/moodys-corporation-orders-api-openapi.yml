@@ -117,41 +117,15 @@ paths:
         delay: 0
         dispatcher: FALLBACK
 components:
+  parameters:
+    orderId:
+      name: orderId
+      in: path
+      description: The unique identifier of the order.
+      required: true
+      schema:
+        type: string
   schemas:
-    Error:
-      type: object
-      description: Standard error response.
-      required:
-      - code
-      - message
-      properties:
-        code:
-          type: string
-          description: Machine-readable error code.
-          example: example_value
-        message:
-          type: string
-          description: Human-readable error message.
-          example: example_value
-        details:
-          type: string
-          description: Additional details about the error.
-          example: example_value
-    OrderCreate:
-      type: object
-      description: Request body for creating a new order.
-      required:
-      - basketId
-      - fileType
-      properties:
-        basketId:
-          type: string
-          description: The basket to generate the order from.
-          example: '500123'
-        fileType:
-          type: string
-          description: The desired output file format. Use the /filetypes endpoint to retrieve supported formats.
-          example: example_value
     Order:
       type: object
       description: A data generation order created from a basket. Orders are processed asynchronously and produce downloadable output files.
@@ -200,14 +174,40 @@ components:
           type: string
           description: Error description if the order failed. Present only when status is Failed.
           example: example_value
-  parameters:
-    orderId:
-      name: orderId
-      in: path
-      description: The unique identifier of the order.
-      required: true
-      schema:
-        type: string
+    OrderCreate:
+      type: object
+      description: Request body for creating a new order.
+      required:
+      - basketId
+      - fileType
+      properties:
+        basketId:
+          type: string
+          description: The basket to generate the order from.
+          example: '500123'
+        fileType:
+          type: string
+          description: The desired output file format. Use the /filetypes endpoint to retrieve supported formats.
+          example: example_value
+    Error:
+      type: object
+      description: Standard error response.
+      required:
+      - code
+      - message
+      properties:
+        code:
+          type: string
+          description: Machine-readable error code.
+          example: example_value
+        message:
+          type: string
+          description: Human-readable error message.
+          example: example_value
+        details:
+          type: string
+          description: Additional details about the error.
+          example: example_value
   securitySchemes:
     oauth2:
       type: oauth2

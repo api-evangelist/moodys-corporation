@@ -91,14 +91,20 @@ paths:
         dispatcher: FALLBACK
 components:
   parameters:
-    endDate:
-      name: endDate
+    mnemonic:
+      name: mnemonic
       in: query
-      description: The end date for the data range in YYYY-MM-DD format. If omitted, returns data through the latest available observation or forecast.
-      required: false
+      description: The unique series mnemonic identifier. Mnemonics follow the Data Buffet naming convention, e.g., FGDP_US for US GDP or EMPLPAY.IUSA for US total nonfarm payrolls.
+      required: true
       schema:
         type: string
-        format: date
+      examples:
+        usGdp:
+          summary: US Gross Domestic Product
+          value: FGDP_US
+        usPayrolls:
+          summary: US Total Nonfarm Payrolls
+          value: EMPLPAY.IUSA
     freq:
       name: freq
       in: query
@@ -120,20 +126,14 @@ components:
       schema:
         type: string
         format: date
-    mnemonic:
-      name: mnemonic
+    endDate:
+      name: endDate
       in: query
-      description: The unique series mnemonic identifier. Mnemonics follow the Data Buffet naming convention, e.g., FGDP_US for US GDP or EMPLPAY.IUSA for US total nonfarm payrolls.
-      required: true
+      description: The end date for the data range in YYYY-MM-DD format. If omitted, returns data through the latest available observation or forecast.
+      required: false
       schema:
         type: string
-      examples:
-        usGdp:
-          summary: US Gross Domestic Product
-          value: FGDP_US
-        usPayrolls:
-          summary: US Total Nonfarm Payrolls
-          value: EMPLPAY.IUSA
+        format: date
     trans:
       name: trans
       in: query
@@ -157,18 +157,17 @@ components:
         type: string
         format: date
   schemas:
-    MultiSeriesRequest:
+    MultiSeriesResponse:
       type: object
-      description: Request body for retrieving multiple series simultaneously.
+      description: Response containing multiple time series.
       required:
       - series
       properties:
         series:
           type: array
-          description: Array of series requests. Maximum 25 series per request.
-          maxItems: 25
+          description: Array of time series responses.
           items:
-            $ref: '#/components/schemas/SeriesRequest'
+            $ref: '#/components/schemas/SeriesResponse'
           example: []
     Error:
       type: object
@@ -189,18 +188,6 @@ components:
           type: string
           description: Additional details about the error.
           example: example_value
-    MultiSeriesResponse:
-      type: object
-      description: Response containing multiple time series.
-      required:
-      - series
-      properties:
-        series:
-          type: array
-          description: Array of time series responses.
-          items:
-            $ref: '#/components/schemas/SeriesResponse'
-          example: []
     SeriesRequest:
       type: object
       description: A single series request within a multi-series call.
@@ -247,32 +234,6 @@ components:
           format: date
           description: Vintage date for historical data revisions.
           example: '2026-01-15'
-    Observation:
-      type: object
-      description: A single time series observation or forecast data point.
-      required:
-      - date
-      - value
-      properties:
-        date:
-          type: string
-          format: date
-          description: The observation date in YYYY-MM-DD format. For frequencies coarser than daily, represents the period start date.
-          example: '2026-01-15'
-        value:
-          type:
-          - number
-          - 'null'
-          description: The observation value. Null indicates missing or unavailable data for this period.
-          example: example_value
-        status:
-          type: string
-          description: Status indicator for the data point.
-          enum:
-          - History
-          - Forecast
-          - Preliminary
-          example: History
     SeriesResponse:
       type: object
       description: Response containing a single time series with metadata and observations.
@@ -345,6 +306,45 @@ components:
           description: Array of date-value pairs representing the time series observations and/or forecasts.
           items:
             $ref: '#/components/schemas/Observation'
+          example: []
+    Observation:
+      type: object
+      description: A single time series observation or forecast data point.
+      required:
+      - date
+      - value
+      properties:
+        date:
+          type: string
+          format: date
+          description: The observation date in YYYY-MM-DD format. For frequencies coarser than daily, represents the period start date.
+          example: '2026-01-15'
+        value:
+          type:
+          - number
+          - 'null'
+          description: The observation value. Null indicates missing or unavailable data for this period.
+          example: example_value
+        status:
+          type: string
+          description: Status indicator for the data point.
+          enum:
+          - History
+          - Forecast
+          - Preliminary
+          example: History
+    MultiSeriesRequest:
+      type: object
+      description: Request body for retrieving multiple series simultaneously.
+      required:
+      - series
+      properties:
+        series:
+          type: array
+          description: Array of series requests. Maximum 25 series per request.
+          maxItems: 25
+          items:
+            $ref: '#/components/schemas/SeriesRequest'
           example: []
   securitySchemes:
     oauth2:

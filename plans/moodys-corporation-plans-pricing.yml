@@ -1,4 +1,8 @@
 # API Commons Plans 0.1
+# Provenance stamped 2026-10-07 (roadmap#943): written by an API Evangelist sweep (undated — the file carries no date and git cannot supply one), not
+# harvested from the provider. `method: generated` so the economics campaign may replace it with a
+# dated, verbatim transcription; every figure below is unverified until it does.
+method: generated
 specVersion: "0.1"
 provider:
   id: moodys-corporation
@@ -56,3 +60,21 @@ absences:
   - No public self-service developer tier or free sandbox key listed publicly.
   - No published per-call USD pricing on the developer portal.
   - No public price list page.
+x-canonical:
+  generated: '2026-10-08'
+  vocabulary: all/0-working/economics/plans-canonical.yml
+  models: []
+  units: []
+  plans:
+  - name: Enterprise (Quote)
+    access: other
+    model: unstated
+    model_how: derived
+    units: []
+    periods: []
+  - name: Public Code Samples (Free)
+    access: other
+    model: unstated
+    model_how: derived
+    units: []
+    periods: []

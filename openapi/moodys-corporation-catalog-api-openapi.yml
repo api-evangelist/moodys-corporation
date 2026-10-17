@@ -56,14 +56,6 @@ paths:
         '404':
           description: Product not found
 components:
-  parameters:
-    productId:
-      name: productId
-      in: path
-      required: true
-      description: The identifier of a Moody's Analytics product in the catalog.
-      schema:
-        type: string
   schemas:
     Product:
       type: object
@@ -86,6 +78,14 @@ components:
           type: array
           items:
             type: string
+  parameters:
+    productId:
+      name: productId
+      in: path
+      required: true
+      description: The identifier of a Moody's Analytics product in the catalog.
+      schema:
+        type: string
   securitySchemes:
     oauth2:
       type: oauth2

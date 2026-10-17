@@ -84,6 +84,14 @@ paths:
         '404':
           description: Job not found or not complete
 components:
+  parameters:
+    jobId:
+      name: jobId
+      in: path
+      required: true
+      description: The identifier of an analysis job.
+      schema:
+        type: string
   schemas:
     Job:
       type: object
@@ -111,16 +119,6 @@ components:
           format: uri
         error:
           $ref: '#/components/schemas/Error'
-    Error:
-      type: object
-      properties:
-        code:
-          type: string
-        message:
-          type: string
-        details:
-          type: object
-          additionalProperties: true
     JobRequest:
       type: object
       required:
@@ -138,14 +136,16 @@ components:
         notifyUrl:
           type: string
           format: uri
-  parameters:
-    jobId:
-      name: jobId
-      in: path
-      required: true
-      description: The identifier of an analysis job.
-      schema:
-        type: string
+    Error:
+      type: object
+      properties:
+        code:
+          type: string
+        message:
+          type: string
+        details:
+          type: object
+          additionalProperties: true
   securitySchemes:
     oauth2:
       type: oauth2

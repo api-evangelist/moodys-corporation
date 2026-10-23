@@ -1,0 +1,38 @@
+edges:
+- partner_name: FINOS (membership)
+  partner: finos
+  partner_match: register
+  type: register
+  direction: partner-built
+  category: FINOS membership
+  evidence: https://www.finos.org/members
+  channel: standard-directory
+  relationship: standard-participant
+  partner_tier: Gold
+  contract_reference:
+    register: FINOS members (www.finos.org/members)
+    spec_file: null
+    standard: FINOS
+    role: finos-member
+    registered_name: Moody's
+    website: https://www.moodys.com/
+    matched_domain: moodys.com
+    matched_by: domain+local-verified
+    signal_note: 'participation only: FINOS membership is standard-participant evidence, not depth. The tier (partner_tier)
+      is CONTEXT, never counted'
+    detected_by: sweep-finos-open-source-fintech.py
+    detected: '2026-10-22'
+  detected_by: sweep-finos-open-source-fintech.py
+  first_seen: '2026-10-22'
+generated: '2026-10-22'
+method: searched
+source:
+- https://landscape.finos.org/data/full.json
+- https://raw.githubusercontent.com/finos/finos-landscape/e926c0ba0e77896a0718eb29b4f33ba5c210f335/landscape.yml
+- https://www.finos.org/members
+- https://github.com/finos/<repo>/blob/HEAD/MAINTAINERS.md
+checked:
+- https://github.com/finos/<repo>/blob/HEAD/MAINTAINERS.md
+- https://landscape.finos.org/data/full.json
+- https://raw.githubusercontent.com/finos/finos-landscape/e926c0ba0e77896a0718eb29b4f33ba5c210f335/landscape.yml
+- https://www.finos.org/members
